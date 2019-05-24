@@ -1,0 +1,163 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.teocfish.teoc.OrderCancel"
+    android:background="@color/color_Lightgrey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:background="#e6e4e3"
+                android:text="OD2053436120834"
+                android:paddingTop="@dimen/_8sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:textColor="#ccccbc"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cancel_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+           app:cardElevation="@dimen/_2sdp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@color/WHITE">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/productImage1"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/defaultimage"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_alignParentRight="true"/>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/productImage1"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_5sdp">
+
+                <TextView
+                    android:id="@+id/productName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Trump returns to white House from vacation at the end of a catastrophic week"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/price1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/productName1"
+                    android:layout_marginTop="7dp"
+                    android:maxLines="3"
+                    android:text="$6,999"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/price1"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_2sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:text="Qty: 1 "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"/>
+
+            </RelativeLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="#e6e4e3"
+            android:text="REASON FOR CANCELLATION"
+            android:paddingTop="@dimen/_15sdp"
+            android:paddingLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="#ccccbc"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:background="@color/WHITE"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardElevation="@dimen/_2sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/spinner_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:entries="@array/order_cancel"
+                        android:autofillHints="Order for cancellation"
+                        android:prompt="@string/cancel">
+
+                    </Spinner>
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <View
+                    android:id="@+id/spinner_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginRight="@dimen/_70sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_below="@id/spinner_layout"
+                    android:background="@color/color_Lightgrey"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/order_cancellation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="confirm cancellation"
+        android:textStyle="bold"
+        android:textColor="@color/LOGO"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

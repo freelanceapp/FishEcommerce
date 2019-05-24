@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#148cbf</color>
+    <color name="colorPrimaryDark">#1075a0</color>
+    <color name="colorAccent">#4a4a4a</color>
+    <color name="white">#fff</color>
+    <color name="blue">#436bff</color>
+    <color name="light_black">#4a4a4a</color>
+    <color name="color_white">#fff</color>
+    <color name="black">#000</color>
+    <color name="gray">#EBEBEB</color>
+    <color name="light_red">#a00</color>
+    <color name="sky_blue">#7CD4F7</color>
+    <color name="color_Red">#C62828</color>
+    <color name="colorgrey">#CFD8DC</color>
+    <color name="color_darkRed">#FF2400</color>
+    <color name="colorGrey2">#616161</color>
+    <color name="color_Lightgrey">#EEEEEE</color>
+    <color name="colorBrown">#6D4C41</color>
+    <color name="RED">#D50000</color>
+    <color name="Blue">#FF4D6ED2</color>
+    <color name="transparent">#00000000</color>
+    <color name="seagreen">#21bab5</color>
+    <color name="WHITE">#eeeeee</color>
+    <color name="GREEN">#14ef2a</color>
+    <color name="LOGO">#5492d6</color>
+    <color name="logo_text">#74aeed</color>
+    <color name="BLACK">#27292b</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="google_plus">#c62828</color>
+    <color name="facebook">#1976d2</color>
+    <color name="yellow">#FFEFC014</color>
+</resources>
