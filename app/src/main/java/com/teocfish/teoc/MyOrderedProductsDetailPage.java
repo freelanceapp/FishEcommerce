@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.teocfish.teoc.utills.Config;
+
 import java.util.List;
 
 import butterknife.BindView;

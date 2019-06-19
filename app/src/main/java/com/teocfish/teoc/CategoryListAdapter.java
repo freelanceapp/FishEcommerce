@@ -30,8 +30,8 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategorieListViewH
     @Override
     public void onBindViewHolder(CategorieListViewHolder holder, int position) {
 
-        holder.catName.setText(categoryListResponses.get(position).getCategory_name());
-        String temp = categoryListResponses.get(position).getCategory_image().replaceAll(" ", "%20");
+        holder.catName.setText(categoryListResponses.get(position).getCategoryName());
+        String temp = categoryListResponses.get(position).getCategoryImage().replaceAll(" ", "%20");
         Picasso.with(context)
                 .load(temp)
                 .placeholder(R.drawable.defaultimage)

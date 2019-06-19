@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.UpdateManager;
+import com.teocfish.teoc.activity.LoginActivity;
+import com.teocfish.teoc.utills.Config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +29,8 @@ public class SplashScreen extends Activity {
 
     public static List<CategoryListResponse> categoryListResponseData;
     public static List<SliderListResponse> sliderListResponsesData;
-    public static List<Product> allProductsData;
-    public static List<Product> imagesList1;
+    public static List<ModelProductList> allProductsData;
+    public static List<ModelProductList> imagesList1;
     String id = "";
     @BindView(R.id.errorText)
     TextView errorText;
@@ -48,25 +45,6 @@ public class SplashScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        ImageView image = (ImageView) findViewById(R.id.teoc);
-//        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-//        image.startAnimation(animation);
-//
-//        Thread timer = new Thread() {
-//            @Override
-//            public void run() {
-//                try {
-//                    sleep(8000);
-//                    super.run();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-////                Intent intent = new Intent(SplashScreen.this, Login.class);
-////                startActivity(intent);
-//                finish();
-//            }
-//        };
-//        timer.start();
         ButterKnife.bind(this);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         sharedPreferencesCache = getSharedPreferences("cacheExist", 0);
@@ -158,19 +136,19 @@ public class SplashScreen extends Activity {
 
     public void getAllProducts() {
         // getting news list data
-        Api.getClient().getAllProducts(new Callback<List<Product>>() {
+        Api.getClient().getAllProducts(new Callback<List<ModelProductList>>() {
             @Override
-            public void success(List<Product> allProducts, Response response) {
+            public void success(List<ModelProductList> allModelProductLists, Response response) {
                 try {
-                    allProductsData = allProducts;
-//                    Log.d("allProductsData", allProducts.get(0).getProductName());
+                    allProductsData = allModelProductLists;
+//                    Log.d("allProductsData", allModelProductLists.get(0).getProductName());
                     Gson gson = new Gson();
                     String json = gson.toJson(allProductsData);
                     editor.putString("newslist", json);
                     editor.commit();
                     moveNext();
                 } catch (Exception e) {
-                    errorText.setText("No Product Added In This Store!");
+                    errorText.setText("No ModelProductList Added In This Store!");
                     internetNotAvailable.setVisibility(View.VISIBLE);
                     splashImage.setVisibility(View.GONE);
                 }
@@ -207,8 +185,8 @@ public class SplashScreen extends Activity {
 //            Log.d("error notification data", e.toString());
             isFromNotification = false;
         }
-        if (Common.getSavedUserData(SplashScreen.this, "email").equalsIgnoreCase("")&&!isFromNotification) {
-            Config.moveTo(SplashScreen.this, Login.class);
+        if (SharedPrefManager.getSavedUserData(SplashScreen.this, "email").equalsIgnoreCase("")&&!isFromNotification) {
+            Config.moveTo(SplashScreen.this, LoginActivity.class);
             finishAffinity();
         } else {
             Intent intent = new Intent(SplashScreen.this, MainActivity.class);

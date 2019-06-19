@@ -1,54 +1,56 @@
 package com.teocfish.teoc;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class CategoryListResponse {
 
-    private List<Product> products = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private String cat_id;
-    private String category_name;
-    private String category_image;
-    public List<Product> getProducts() {
+    @SerializedName("cat_id")
+    @Expose
+    private String catId;
+    @SerializedName("category_name")
+    @Expose
+    private String categoryName;
+    @SerializedName("category_image")
+    @Expose
+    private String categoryImage;
+    @SerializedName("products")
+    @Expose
+    private List<ModelProductList> products = null;
+
+    public String getCatId() {
+        return catId;
+    }
+
+    public void setCatId(String catId) {
+        this.catId = catId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getCategoryImage() {
+        return categoryImage;
+    }
+
+    public void setCategoryImage(String categoryImage) {
+        this.categoryImage = categoryImage;
+    }
+
+    public List<ModelProductList> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(List<ModelProductList> products) {
         this.products = products;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    public String getCat_id() {
-        return cat_id;
-    }
-
-    public void setCat_id(String cat_id) {
-        this.cat_id = cat_id;
-    }
-
-    public String getCategory_name() {
-        return category_name;
-    }
-
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
-    }
-
-    public String getCategory_image() {
-        return category_image;
-    }
-
-    public void setCategory_image(String category_image) {
-        this.category_image = category_image;
-    }
-
 }

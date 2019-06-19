@@ -5,13 +5,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+
+import com.teocfish.teoc.activity.LoginActivity;
+import com.teocfish.teoc.activity.SignUp;
+import com.teocfish.teoc.utills.Config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,7 @@ public class MyWishList extends Fragment {
     @BindView(R.id.categoryRecyclerView)
     RecyclerView productsRecyclerView;
     public static int categoryPosition = 0;
-    public static List<Product> productsData = new ArrayList<>();
+    public static List<ModelProductList> productsData = new ArrayList<ModelProductList>();
     @BindView(R.id.emptyWishlistLayout)
     LinearLayout emptyWishlistLayout;
     @BindView(R.id.loginLayout)
@@ -64,7 +67,7 @@ public class MyWishList extends Fragment {
                 getActivity().finish();
                 break;
             case R.id.loginNow:
-                Config.moveTo(getActivity(), Login.class);
+                Config.moveTo(getActivity(), LoginActivity.class);
                 break;
             case R.id.txtSignUp:
                 Config.moveTo(getActivity(), SignUp.class);
@@ -88,7 +91,7 @@ public class MyWishList extends Fragment {
                 try {
                     if (wishlistResponse.getSuccess().equalsIgnoreCase("true")) {
 
-//                        Log.d("cartId", wishlistResponse.getProducts().size() + "");
+//                        Log.d("cartId", wishlistResponse.getModelProductLists().size() + "");
                         productsData.clear();
                         productsData = wishlistResponse.getProducts();
                         setProductsData();

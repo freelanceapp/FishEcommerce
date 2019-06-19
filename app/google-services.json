@@ -1,39 +1,37 @@
 {
   "project_info": {
-    "project_number": "743885898890",
-    "firebase_url": "https://teocfish.firebaseio.com",
-    "project_id": "teocfish",
-    "storage_bucket": "teocfish.appspot.com"
+    "project_number": "1055600765575",
+    "firebase_url": "https://teocfishproject.firebaseio.com",
+    "project_id": "teocfishproject",
+    "storage_bucket": "teocfishproject.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:743885898890:android:be0332cababd7fda",
+        "mobilesdk_app_id": "1:1055600765575:android:be0332cababd7fda",
         "android_client_info": {
           "package_name": "com.teocfish.teoc"
         }
       },
       "oauth_client": [
         {
-          "client_id": "743885898890-kt6h288s2luge9gkpejc37r5m03sdtqv.apps.googleusercontent.com",
+          "client_id": "1055600765575-9om2i30o3dritoju728s8lo7k9hggr2i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCvTpXatny-CIzkhNbPZWFJPTm94A3M8J8"
+          "current_key": "AIzaSyCwj4cCSWCLoYfLB6JC7Ws7OyD8lvACMCo"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055600765575-9om2i30o3dritoju728s8lo7k9hggr2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

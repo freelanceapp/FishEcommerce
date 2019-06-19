@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="No product added in this category!"
+            android:text="No modelProductList added in this category!"
             android:textSize="@dimen/_16ssp"
             android:layout_marginTop="@dimen/_10sdp"
             android:textStyle="bold" />

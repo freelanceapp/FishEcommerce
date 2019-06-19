@@ -14,7 +14,7 @@ public class Ordere {
     private String date;
     private String total;
     private String address;
-    private List<Product> ordredproduct = null;
+    private List<ModelProductList> ordredproduct = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 
@@ -73,11 +73,11 @@ public class Ordere {
         this.total = total;
     }
 
-    public List<Product> getOrdredproduct() {
+    public List<ModelProductList> getOrdredproduct() {
         return ordredproduct;
     }
 
-    public void setOrdredproduct(List<Product> ordredproduct) {
+    public void setOrdredproduct(List<ModelProductList> ordredproduct) {
         this.ordredproduct = ordredproduct;
     }
 

@@ -8,7 +8,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ public class SearchProducts extends Fragment {
     RecyclerView searchProductsRecyclerView;
     @BindView(R.id.searchEditText)
     EditText searchEditText;
-    List<Product> productList;
+    List<ModelProductList> modelProductListList;
 
     @BindView(R.id.defaultMessage)
     TextView defaultMessage;
@@ -41,7 +40,7 @@ public class SearchProducts extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.activity_search_products, container, false);
         ButterKnife.bind(this, view);
-        defaultMessage.setText("Search Any Product");
+        defaultMessage.setText("Search Any ModelProductList");
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -80,22 +79,22 @@ public class SearchProducts extends Fragment {
     }
 
     private void searchProducts(String s) {
-        productList = new ArrayList<>();
+        modelProductListList = new ArrayList<ModelProductList>();
         if (s.length() > 0) {
             for (int i = 0; i < SplashScreen.allProductsData.size(); i++)
                 if (SplashScreen.allProductsData.get(i).getProductName().toLowerCase().contains(s.toLowerCase().trim())) {
-                    productList.add(SplashScreen.allProductsData.get(i));
+                    modelProductListList.add(SplashScreen.allProductsData.get(i));
                 }
-            if (productList.size() < 1) {
+            if (modelProductListList.size() < 1) {
                 defaultMessage.setText("Record Not Found");
                 defaultMessage.setVisibility(View.VISIBLE);
             } else {
                 defaultMessage.setVisibility(View.GONE);
             }
-//            Log.d("size", productList.size() + "" + SplashScreen.allProductsData.size());
+//            Log.d("size", tModels.size() + "" + SplashScreen.allProductsData.size());
         } else {
-            productList = new ArrayList<>();
-            defaultMessage.setText("Search Any Product");
+            modelProductListList = new ArrayList<ModelProductList>();
+            defaultMessage.setText("Search Any ModelProductList");
             defaultMessage.setVisibility(View.VISIBLE);
         }
         setProductsData();
@@ -108,7 +107,7 @@ public class SearchProducts extends Fragment {
         GridLayoutManager gridLayoutManager;
         gridLayoutManager = new GridLayoutManager(getActivity(), 1);
         searchProductsRecyclerView.setLayoutManager(gridLayoutManager);
-        productListAdapter = new SearchProductListAdapter(getActivity(), productList);
+        productListAdapter = new SearchProductListAdapter(getActivity(), modelProductListList);
         searchProductsRecyclerView.setAdapter(productListAdapter);
 
     }

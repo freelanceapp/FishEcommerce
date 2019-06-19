@@ -6,6 +6,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.teocfish.teoc.utills.Config;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;

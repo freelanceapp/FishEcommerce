@@ -2,10 +2,13 @@ package com.teocfish.teoc;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.teocfish.teoc.activity.LoginActivity;
+import com.teocfish.teoc.utills.Config;
+
 import java.util.List;
 
 import butterknife.BindViews;
@@ -62,7 +65,7 @@ public class ForgotPassword extends AppCompatActivity
                 Toast.makeText(ForgotPassword.this, signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 if (signUpResponse.getSuccess().equalsIgnoreCase("true"))
                 {
-                    Config.moveTo(ForgotPassword.this, Login.class);
+                    Config.moveTo(ForgotPassword.this, LoginActivity.class);
                     finishAffinity();
                 }
             }

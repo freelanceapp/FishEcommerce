@@ -8,14 +8,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />-->
-    <!--<permission android:name="android.permission.GET_ACCOUNTS"-->
-        <!--android:protectionLevel="signature"/>-->
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <!--<uses-permission android:name="android.permission.READ_CONTACTS" />-->
-    <!--<permission android:name="android.permission.READ_CONTACTS"-->
-        <!--android:protectionLevel="signature"/>-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> -->
+    <!-- <permission android:name="android.permission.GET_ACCOUNTS" -->
+    <!-- android:protectionLevel="signature"/> -->
+    <uses-permission android:name="android.permission.READ_PROFILE" /> <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
+    <!-- <permission android:name="android.permission.READ_CONTACTS" -->
+    <!-- android:protectionLevel="signature"/> -->
     <uses-permission
         android:name="android.permission.READ_PHONE_STATE"
         tools:node="remove" />
@@ -36,10 +34,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon"
-        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
+        tools:replace="android:icon">
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
@@ -54,10 +52,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignUp"
+            android:name=".activity.SignUp"
             android:screenOrientation="portrait" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".OptionalImageFullView" />
@@ -67,6 +65,7 @@
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_K6veGqYGkoWgi1" />
+
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -77,14 +76,34 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".AccountVerification" />
+
+        <activity android:name=".AccountVerification" /> <!-- Facebook Login Start -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity> <!-- Facebook Login End -->
+        <!-- <meta-data -->
+        <!-- android:name="com.facebook.sdk.ApplicationId" -->
+        <!-- android:value="@string/facebook_app_id" /> -->
         <meta-data
             android:name="SHA-1 certificate"
-            android:value="@string/SHA1_fingerprint"/>
-
+            android:value="@string/SHA1_fingerprint" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -96,15 +115,13 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
-        <meta-data android:name="net.hockeyapp.android.appIdentifier"
-            android:value="f3a50de6e57345ebbfa81be3577f6a0e" />
-
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
-        <activity android:name=".OrderCanceled"></activity>
+        <meta-data
+            android:name="net.hockeyapp.android.appIdentifier"
+            android:value="f3a50de6e57345ebbfa81be3577f6a0e" /> <!-- <activity -->
+        <!-- android:name="com.facebook.FacebookActivity" -->
+        <!-- android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" -->
+        <!-- android:label="@string/app_name" /> -->
+        <activity android:name=".OrderCanceled" />
     </application>
 
 </manifest>

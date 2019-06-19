@@ -8,34 +8,35 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
+import com.teocfish.teoc.utills.Constant;
 
 import java.util.List;
 
 public class OrderProductListAdapter extends RecyclerView.Adapter<OrderedProductsListViewHolder> {
     Context context;
-    List<Product> productList;
+    List<ModelProductList> tModels;
 
-    public OrderProductListAdapter(Context context, List<Product> productList) {
+    public OrderProductListAdapter(Context context, List<ModelProductList> tModels) {
         this.context = context;
-        this.productList = productList;
+        this.tModels = tModels;
     }
 
     @Override
     public OrderedProductsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.ordered_products_list_items1, null);
-        OrderedProductsListViewHolder OrderedProductsListViewHolder = new OrderedProductsListViewHolder(context, view, productList);
-        return OrderedProductsListViewHolder;
+        OrderedProductsListViewHolder orderedProductsListViewHolder = new OrderedProductsListViewHolder(context, view, tModels);
+        return orderedProductsListViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final OrderedProductsListViewHolder holder, final int position) {
 
-        holder.productName1.setText(productList.get(position).getProductName());
+        holder.productName1.setText(tModels.get(position).getProductName());
 
         try {
-//            Log.d("image", productList.get(position).getImages().get(0));
+            Log.d(Constant.TAG, "Images Url : "+ tModels.get(position).getImages().get(0));
             Picasso.with(context)
-                    .load(productList.get(position).getImages().get(0))
+                    .load(tModels.get(position).getImages().get(0))
                     .resize(Integer.parseInt(context.getResources().getString(R.string.targetProductImageWidth1)),Integer.parseInt(context.getResources().getString(R.string.targetProductImageHeight)))
                     .placeholder(R.drawable.defaultimage)
                     .into(holder.image1);
@@ -47,7 +48,7 @@ public class OrderProductListAdapter extends RecyclerView.Adapter<OrderedProduct
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return tModels.size();
     }
 
 }

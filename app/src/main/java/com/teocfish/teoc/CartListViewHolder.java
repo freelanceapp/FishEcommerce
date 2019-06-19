@@ -9,6 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.teocfish.teoc.ModelProductList;
+import com.teocfish.teoc.R;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,7 +29,7 @@ public class CartListViewHolder extends RecyclerView.ViewHolder {
     @BindViews({R.id.txtPrice, R.id.price, R.id.delivery,  R.id.tax,  R.id.amountPayable,  R.id.txtTax})
     List<TextView> textViews;
 
-    public CartListViewHolder(final Context context, View itemView, List<Product> productList) {
+    public CartListViewHolder(final Context context, View itemView, List<ModelProductList> modelProductListList) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         image1 = (ImageView) itemView.findViewById(R.id.productImage1);

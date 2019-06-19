@@ -27,6 +27,8 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.teocfish.teoc.utills.Config;
+
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
 
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
                         }
                         break;
-                    case R.id.email:
+                    case R.id.etEmail:
                         openGmail();
                         break;
                     case R.id.call:
@@ -134,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
         displayFirebaseRegId(); // display firebase id
 
         if (getIntent().getBooleanExtra("isFromNotification", false)) {
-            ProductDetail.productList.clear();
-            ProductDetail.productList.addAll(SplashScreen.imagesList1);
+            ProductDetail.modelProductListList.clear();
+            ProductDetail.modelProductListList.addAll(SplashScreen.imagesList1);
             ProductDetail productDetail = new ProductDetail();
             Bundle bundle = new Bundle();
             bundle.putInt("position", 0);
@@ -147,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(MainActivity.this,DeliveryLocation.class));
+                startActivity(new Intent(MainActivity.this, DeliveryLocation.class));
                 finish();
             }
         });
@@ -237,10 +239,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getUserId() {
-        if (Common.getSavedUserData(MainActivity.this, "userId").equalsIgnoreCase("")) {
+        if (SharedPrefManager.getSavedUserData(MainActivity.this, "userId").equalsIgnoreCase("")) {
             userId = "";
         } else {
-            userId = Common.getSavedUserData(MainActivity.this, "userId");
+            userId = SharedPrefManager.getSavedUserData(MainActivity.this, "userId");
 //            Log.d("userId", userId);
         }
 

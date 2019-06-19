@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
+import com.teocfish.teoc.utills.Config;
+import com.teocfish.teoc.utills.Constant;
 
 import java.util.List;
 
@@ -21,17 +23,17 @@ import retrofit.client.Response;
 
 public class WishListAdapter extends RecyclerView.Adapter<HomeProductsViewHolder> {
     Context context;
-    List<Product> productList;
+    List<ModelProductList> modelProductListList;
 
-    public WishListAdapter(Context context, List<Product> productList) {
+    public WishListAdapter(Context context, List<ModelProductList> modelProductListList) {
         this.context = context;
-        this.productList = productList;
+        this.modelProductListList = modelProductListList;
     }
 
     @Override
     public HomeProductsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.wish_list_items, null);
-        HomeProductsViewHolder homeProductsViewHolder = new HomeProductsViewHolder(context, view, productList);
+        HomeProductsViewHolder homeProductsViewHolder = new HomeProductsViewHolder(context, view, modelProductListList);
         return homeProductsViewHolder;
     }
 
@@ -41,32 +43,33 @@ public class WishListAdapter extends RecyclerView.Adapter<HomeProductsViewHolder
 
         holder.cardView.setVisibility(View.GONE);
         holder.cardView1.setVisibility(View.VISIBLE);
-        holder.productName1.setText(productList.get(position).getProductName());
-        holder.price1.setText(MainActivity.currency + " " + productList.get(position).getSellprice());
+        holder.productName1.setText(modelProductListList.get(position).getProductName());
+        holder.price1.setText(MainActivity.currency + " " + modelProductListList.get(position).getSellprice());
         try {
+            Log.d(Constant.TAG, "Images Url : "+ modelProductListList.get(position).getImages().get(0));
             Picasso.with(context)
-                    .load(productList.get(position).getImages().get(0))
+                    .load(modelProductListList.get(position).getImages().get(0))
                     .resize(Integer.parseInt(context.getResources().getString(R.string.targetProductImageWidth1)),Integer.parseInt(context.getResources().getString(R.string.targetProductImageHeight)))
                     .placeholder(R.drawable.defaultimage)
                     .into(holder.image1);
         } catch (Exception e) {
         }
         try {
-            double discountPercentage = Integer.parseInt(productList.get(position).getMrpprice()) - Integer.parseInt(productList.get(position).getSellprice());
+            double discountPercentage = Integer.parseInt(modelProductListList.get(position).getMrpprice()) - Integer.parseInt(modelProductListList.get(position).getSellprice());
 //            Log.d("percentage", discountPercentage + "");
-            discountPercentage = (discountPercentage / Integer.parseInt(productList.get(position).getMrpprice())) * 100;
+            discountPercentage = (discountPercentage / Integer.parseInt(modelProductListList.get(position).getMrpprice())) * 100;
             if ((int) Math.round(discountPercentage) > 0) {
                 holder.discountPercentage1.setText(((int) Math.round(discountPercentage) + "% Off"));
             }
-            holder.actualPrice1.setText(MainActivity.currency + " " + productList.get(position).getMrpprice());
+            holder.actualPrice1.setText(MainActivity.currency + " " + modelProductListList.get(position).getMrpprice());
             holder.actualPrice1.setPaintFlags(holder.actualPrice1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         }catch (Exception e){}
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProductDetail.productList.clear();
-                ProductDetail.productList.addAll(productList);
+                ProductDetail.modelProductListList.clear();
+                ProductDetail.modelProductListList.addAll(modelProductListList);
                 ProductDetail productDetail = new ProductDetail();
                 Bundle bundle = new Bundle();
                 bundle.putInt("position", position);
@@ -85,7 +88,7 @@ public class WishListAdapter extends RecyclerView.Adapter<HomeProductsViewHolder
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return modelProductListList.size();
     }
 
     private void addToWishList(final int position) {
@@ -94,7 +97,7 @@ public class WishListAdapter extends RecyclerView.Adapter<HomeProductsViewHolder
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);
         pDialog.show();
-        Api.getClient().addToWishList(productList.get(position).getProductId(),
+        Api.getClient().addToWishList(modelProductListList.get(position).getProductId(),
                 MainActivity.userId,
                 new Callback<AddToWishlistResponse>() {
                     @Override

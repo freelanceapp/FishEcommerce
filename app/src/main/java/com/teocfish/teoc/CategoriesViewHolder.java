@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-
 public class CategoriesViewHolder extends RecyclerView.ViewHolder {
 
     ImageView image;

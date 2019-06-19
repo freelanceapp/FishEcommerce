@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
+import com.teocfish.teoc.utills.Config;
 
 import java.util.List;
 
@@ -26,31 +26,31 @@ import retrofit.client.Response;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
     Context context;
-    List<Product> productList;
+    List<ModelProductList> modelProductListList;
     double totalAmount = 0f, amountPayable;
     public static String totalAmountPayable;
     double tax=0f;
-    public CartListAdapter(Context context, List<Product> productList) {
+    public CartListAdapter(Context context, List<ModelProductList> modelProductListList) {
         this.context = context;
-        this.productList = productList;
+        this.modelProductListList = modelProductListList;
     }
 
     @Override
     public CartListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.cart_list_items, null);
-        CartListViewHolder CartListViewHolder = new CartListViewHolder(context, view, productList);
+        CartListViewHolder CartListViewHolder = new CartListViewHolder(context, view, modelProductListList);
         return CartListViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final CartListViewHolder holder, final int position)
     {
-        totalAmount = totalAmount + (Double.parseDouble(productList.get(position).getSellprice()) * Double.parseDouble(productList.get(position).getQuantity()));
-        if (position == productList.size() - 1) {
+        totalAmount = totalAmount + (Double.parseDouble(modelProductListList.get(position).getSellprice()) * Double.parseDouble(modelProductListList.get(position).getQuantity()));
+        if (position == modelProductListList.size() - 1) {
             holder.totalAmount.setVisibility(View.VISIBLE);
             holder.txtGurantee.setText(Html.fromHtml(context.getResources().getString(R.string.secure_payment_text)));
 
-            holder.textViews.get(0).setText("Price (" + productList.size() + " items)");
+            holder.textViews.get(0).setText("Price (" + modelProductListList.size() + " items)");
             holder.textViews.get(1).setText(MainActivity.currency + " " + totalAmount);
             if (MyCartList.cartistResponseData.getShipping().length()>0) {
 
@@ -75,36 +75,36 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
         } else
             holder.totalAmount.setVisibility(View.GONE);
 
-        holder.productName1.setText(productList.get(position).getProductName());
-        holder.price1.setText(MainActivity.currency + " " + productList.get(position).getSellprice());
-        holder.quantity.setText("Qty: " + productList.get(position).getQuantity());
+        holder.productName1.setText(modelProductListList.get(position).getProductName());
+        holder.price1.setText(MainActivity.currency + " " + modelProductListList.get(position).getSellprice());
+        holder.quantity.setText("Qty: " + modelProductListList.get(position).getQuantity());
         try {
             Picasso.with(context)
-                    .load(productList.get(position).getImages().get(0))
+                    .load(modelProductListList.get(position).getImages().get(0))
                     .resize(Integer.parseInt(context.getResources().getString(R.string.cartImageWidth)),Integer.parseInt(context.getResources().getString(R.string.cartImageWidth)))
                     .placeholder(R.drawable.defaultimage)
                     .into(holder.image1);
         } catch (Exception e) {
         }
 
-//        if (!productList.get(position).getSize().equalsIgnoreCase("")) {
-//            Log.d("size", productList.get(position).getSize());
-//            holder.size.setText("Size: " + productList.get(position).getSize());
+//        if (!modelProductListList.get(position).getSize().equalsIgnoreCase("")) {
+//            Log.d("size", modelProductListList.get(position).getSize());
+//            holder.size.setText("Size: " + modelProductListList.get(position).getSize());
 //            holder.size.setVisibility(View.VISIBLE);
 //        } else {
 //            holder.size.setVisibility(View.GONE);
 //        }
-//        if (!productList.get(position).getProductColor().equalsIgnoreCase("")) {
-//            Log.d("color", productList.get(position).getProductColor());
-//            holder.color.setText("Color: " + productList.get(position).getProductColor());
+//        if (!modelProductListList.get(position).getProductColor().equalsIgnoreCase("")) {
+//            Log.d("color", modelProductListList.get(position).getProductColor());
+//            holder.color.setText("Color: " + modelProductListList.get(position).getProductColor());
 //            holder.color.setVisibility(View.VISIBLE);
 //        } else {
 //            holder.color.setVisibility(View.GONE);
 //        }
         try {
-            double discountPercentage = Integer.parseInt(productList.get(position).getMrpprice()) - Integer.parseInt(productList.get(position).getSellprice());
+            double discountPercentage = Integer.parseInt(modelProductListList.get(position).getMrpprice()) - Integer.parseInt(modelProductListList.get(position).getSellprice());
 //            Log.d("percentage", discountPercentage + "");
-            discountPercentage = (discountPercentage / Integer.parseInt(productList.get(position).
+            discountPercentage = (discountPercentage / Integer.parseInt(modelProductListList.get(position).
 
                     getMrpprice())) * 100;
             if ((int) Math.round(discountPercentage) > 0)
@@ -112,7 +112,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
             {
                 holder.discountPercentage1.setText(((int) Math.round(discountPercentage) + "% Off"));
             }
-            holder.actualPrice1.setText(MainActivity.currency + " " + productList.get(position).getMrpprice());
+            holder.actualPrice1.setText(MainActivity.currency + " " + modelProductListList.get(position).getMrpprice());
             holder.actualPrice1.setPaintFlags(holder.actualPrice1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         } catch (Exception e) {
@@ -122,8 +122,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
         {
             @Override
             public void onClick(View view) {
-                ProductDetail.productList.clear();
-                ProductDetail.productList.addAll(productList);
+                ProductDetail.modelProductListList.clear();
+                ProductDetail.modelProductListList.addAll(modelProductListList);
                 ProductDetail productDetail = new ProductDetail();
                 Bundle bundle = new Bundle();
                 bundle.putInt("position", position);
@@ -143,8 +143,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
         popupMenu.getMenuInflater().
 
                 inflate(R.menu.textview_popup_menu, popupMenu.getMenu());
-//        Log.d("productQuantity", Integer.parseInt(productList.get(position).getQuantity()) + "");
-        for (int i = 1; i <= Integer.parseInt(productList.get(position).getPlimit()); i++)
+//        Log.d("productQuantity", Integer.parseInt(modelProductListList.get(position).getQuantity()) + "");
+        for (int i = 1; i <= Integer.parseInt(modelProductListList.get(position).getPlimit()); i++)
 
         {
             popupMenu.getMenu().add(i + "");
@@ -155,7 +155,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
 
-                if (!productList.get(position).getQuantity().trim().equalsIgnoreCase(menuItem.getTitle().toString().trim())) {
+                if (!modelProductListList.get(position).getQuantity().trim().equalsIgnoreCase(menuItem.getTitle().toString().trim())) {
                     holder.quantity.setText("Qty: " + menuItem.getTitle() + "");
                     updateCart(position, menuItem.getTitle().toString());
                 }
@@ -176,7 +176,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return modelProductListList.size();
     }
 
     private void updateCart(final int position, final String quantity) {
@@ -187,7 +187,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
         progressDialog.show();
         Api.getClient().updateCart(
                 quantity,
-                productList.get(position).getIteam_id(),
+                modelProductListList.get(position).getIteam_id(),
                 new Callback<AddToWishlistResponse>() {
                     @Override
                     public void success(AddToWishlistResponse addToWishlistResponse, Response response) {

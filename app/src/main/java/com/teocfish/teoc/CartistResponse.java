@@ -13,7 +13,7 @@ public class CartistResponse {
     private String useremail;
     private String tax;
     private String shipping;
-    private List<Product> products = null;
+    private List<ModelProductList> modelProductLists = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getCartid() {
@@ -63,12 +63,12 @@ public class CartistResponse {
         this.shipping = shipping;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<ModelProductList> getModelProductLists() {
+        return modelProductLists;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setModelProductLists(List<ModelProductList> modelProductLists) {
+        this.modelProductLists = modelProductLists;
     }
 
     public Map<String, Object> getAdditionalProperties() {

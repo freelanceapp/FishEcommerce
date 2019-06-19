@@ -1,4 +1,4 @@
-package com.teocfish.teoc;
+package com.teocfish.teoc.utills;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -6,10 +6,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.teocfish.teoc.Api;
+import com.teocfish.teoc.CartListAdapter;
+import com.teocfish.teoc.CartistResponse;
+import com.teocfish.teoc.ChoosePaymentMethod;
+import com.teocfish.teoc.activity.LoginActivity;
+import com.teocfish.teoc.MainActivity;
+import com.teocfish.teoc.MyCartList;
+import com.teocfish.teoc.MyOrderedProductsDetailPage;
+import com.teocfish.teoc.OrderCanceled;
+import com.teocfish.teoc.OrderConfirmed;
+import com.teocfish.teoc.R;
+import com.teocfish.teoc.activity.SignUp;
+import com.teocfish.teoc.SignUpResponse;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit.Callback;
@@ -55,11 +68,11 @@ public class Config {
     public static void showLoginCustomAlertDialog(final Context context, String title, String msg, int type) {
         SweetAlertDialog alertDialog = new SweetAlertDialog(context, type);
         alertDialog.setTitleText(title);
-        alertDialog.setCancelText("Login");
+        alertDialog.setCancelText("LoginActivity");
         alertDialog.setCancelClickListener( new SweetAlertDialog.OnSweetClickListener() {
             @Override
             public void onClick(SweetAlertDialog sweetAlertDialog) {
-                Config.moveTo(context, Login.class);
+                Config.moveTo(context, LoginActivity.class);
 
             }
         });
@@ -90,10 +103,10 @@ public class Config {
             public void success(CartistResponse cartistResponse, Response response) {
                 MainActivity.progressBar.setVisibility(View.GONE);
                 try {
-                    if (cartistResponse.getProducts().size() <= 0) {
+                    if (cartistResponse.getModelProductLists().size() <= 0) {
                         MainActivity.cartCount.setVisibility(View.GONE);
                     } else {
-                        MainActivity.cartCount.setText(cartistResponse.getProducts().size() + "");
+                        MainActivity.cartCount.setText(cartistResponse.getModelProductLists().size() + "");
                         if (!b) {
 //                            Log.d("equals", "equals");
                             MainActivity.cartCount.setVisibility(View.GONE);

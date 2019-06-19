@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.teocfish.teoc.utills.Config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,7 @@ public class ProductDetail extends Fragment {
     ArrayList<String> sliderImages = new ArrayList<>();
     @BindViews({R.id.productName, R.id.price, R.id.actualPrice, R.id.discountPercentage, R.id.quantity, R.id.status})
     List<TextView> textViews;
-    public static List<Product> productList = new ArrayList<>();
+    public static List<ModelProductList> modelProductListList = new ArrayList<>();
     //    ArrayList<String> sizeList = new ArrayList<>();
 //    ArrayList<String> colorList = new ArrayList<>();
     @BindView(R.id.productDescWebView)
@@ -95,7 +96,7 @@ public class ProductDetail extends Fragment {
                 } else {
 
                     Config.showLoginCustomAlertDialog(getActivity(),
-                            "Login To Continue",
+                            "LoginActivity To Continue",
                             "Please login to add product in your wishlist",
                             SweetAlertDialog.WARNING_TYPE);
 
@@ -104,19 +105,11 @@ public class ProductDetail extends Fragment {
             case R.id.addToCart:
                 if (!MainActivity.userId.equalsIgnoreCase("")) {
                     if (addToCart.getText().toString().trim().equalsIgnoreCase("Add To Cart")) {
-
-//                        if (SizeListAdapter.pos == -1 && sizeCardView.getVisibility() == View.VISIBLE) {
-//                            Config.showCustomAlertDialog(getActivity(), "Select Size:", "Please select your size to add this item in your cart.", SweetAlertDialog.ERROR_TYPE);
-//                        } else if (ColorListAdapter.pos == -1 && colorCardView.getVisibility() == View.VISIBLE) {
-//                            Config.showCustomAlertDialog(getActivity(), "Select Color:", "Please select your color to add this item in your cart.", SweetAlertDialog.ERROR_TYPE);
-//                        } else {
                         addToCart();
-//                        }
-
                     } else if (addToCart.getText().toString().trim().equalsIgnoreCase("Out of Stock")) {
                         Config.showCustomAlertDialog(getActivity(),
                                 "Out Of Stock",
-                                "This Product is out of stock.",
+                                "This ModelProductList is out of stock.",
                                 SweetAlertDialog.ERROR_TYPE);
 
                     } else {
@@ -125,7 +118,7 @@ public class ProductDetail extends Fragment {
                 } else {
 
                     Config.showLoginCustomAlertDialog(getActivity(),
-                            "Login To Continue",
+                            "LoginActivity To Continue",
                             "Please login to add product in your cart",
                             SweetAlertDialog.WARNING_TYPE);
                 }
@@ -140,7 +133,7 @@ public class ProductDetail extends Fragment {
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);
         pDialog.show();
-        Api.getClient().addToWishList(productList.get(position).getProductId(),
+        Api.getClient().addToWishList(modelProductListList.get(position).getProductId(),
                 MainActivity.userId,
                 new Callback<AddToWishlistResponse>() {
                     @Override
@@ -184,34 +177,19 @@ public class ProductDetail extends Fragment {
     }
 
     private void addToCart() {
-//        String size = "", color = "";
-//        try {
-//            if (SizeListAdapter.pos != -1) {
-//                size = sizeList.get(SizeListAdapter.pos);
-//            }
-//        } catch (Exception e) {
-//        }
-//        try {
-//
-//            if (ColorListAdapter.pos != -1) {
-//                color = colorList.get(ColorListAdapter.pos);
-//            }
-//        } catch (Exception e) {
-//        }
+
         final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.colorPrimary));
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);
         pDialog.show();
-        Api.getClient().addToCart(productList.get(position).getProductId(),
-                MainActivity.userId,
-                "1",
+        Api.getClient().addToCart(modelProductListList.get(position).getProductId(),
+                MainActivity.userId, "1",
                 new Callback<AddToWishlistResponse>() {
                     @Override
                     public void success(AddToWishlistResponse addToWishlistResponse, Response response) {
                         pDialog.dismiss();
 
-//                        Log.d("addToCartResponse", addToWishlistResponse.getSuccess() + "");
                         if (addToWishlistResponse.getSuccess().equalsIgnoreCase("true")) {
                             addToCart.setText("Go to Cart");
                             Config.getCartList(getActivity(), true);
@@ -220,7 +198,8 @@ public class ProductDetail extends Fragment {
                                     addToWishlistResponse.getMessage(),
                                     "",
                                     SweetAlertDialog.SUCCESS_TYPE);
-                        } else {
+                        }
+                        else {
                             final SweetAlertDialog alertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
                             alertDialog.setTitleText(addToWishlistResponse.getMessage());
                             alertDialog.setConfirmText("Verify Now");
@@ -251,7 +230,7 @@ public class ProductDetail extends Fragment {
     private void checkWishList() {
         progressBar.setVisibility(View.VISIBLE);
         addToWishList.setVisibility(View.GONE);
-        Api.getClient().checkWishList(productList.get(position).getProductId(),
+        Api.getClient().checkWishList(modelProductListList.get(position).getProductId(),
                 MainActivity.userId,
                 new Callback<AddToWishlistResponse>() {
                     @Override
@@ -280,22 +259,22 @@ public class ProductDetail extends Fragment {
     private void getProductDetails() {
         progressBar1.setVisibility(View.VISIBLE);
         addToCart.setVisibility(View.GONE);
-        Api.getClient().getProductDetails(productList.get(position).getProductId(),
-                new Callback<Product>() {
+        Api.getClient().getProductDetails(modelProductListList.get(position).getProductId(),
+                new Callback<ModelProductList>() {
                     @Override
-                    public void success(Product product, Response response) {
+                    public void success(ModelProductList modelProductList, Response response) {
 
                         progressBar1.setVisibility(View.GONE);
                         addToCart.setVisibility(View.VISIBLE);
-//                        Log.d("productDetailsResponse", product.getProductId() + "" + product.toString());
-                        if (Integer.parseInt(product.getQuantity()) < 1) {
+//                        Log.d("productDetailsResponse", modelProductList.getProductId() + "" + modelProductList.toString());
+                        if (Integer.parseInt(modelProductList.getQuantity()) < 1) {
                             textViews.get(4).setText("Out of Stock");
                             addToCart.setBackgroundColor(Color.parseColor("#80148cbf"));
                             addToCart.setText("Out of Stock");
-                        } else if (Integer.parseInt(product.getQuantity()) > 0 && Integer.parseInt(product.getQuantity()) < 10) {
-                            textViews.get(4).setText("Hurry, only " + product.getQuantity() + " left");
+                        } else if (Integer.parseInt(modelProductList.getQuantity()) > 0 && Integer.parseInt(modelProductList.getQuantity()) < 10) {
+                            textViews.get(4).setText("Hurry, only " + modelProductList.getQuantity() + " left");
                         } else textViews.get(4).setVisibility(View.GONE);
-                        textViews.get(5).setText(product.getStatus());
+                        textViews.get(5).setText(modelProductList.getStatus());
 
                     }
 
@@ -342,11 +321,11 @@ public class ProductDetail extends Fragment {
 //    }
 
     private void setData() {
-//        productList.addAll(SplashScreen.categoryListResponseData.get(parentPosition).getProducts());
-//        Log.d("productId", productList.get(position).getProductId());
+//        tModels.addAll(SplashScreen.categoryListResponseData.get(parentPosition).getModelProductLists());
+//        Log.d("productId", tModels.get(position).getProductId());
         sliderImages = new ArrayList<>();
         try {
-            sliderImages.addAll(productList.get(position).getImages());
+            sliderImages.addAll(modelProductListList.get(position).getImages());
             if (sliderImages.size() > 0) {
                 init();
                 noImageAdded.setVisibility(View.GONE);
@@ -358,32 +337,32 @@ public class ProductDetail extends Fragment {
             noImageAdded.setVisibility(View.VISIBLE);
         }
         setDots(0);
-        productQuantity = productList.get(position).getQuantity();
-        productDescWebView.loadDataWithBaseURL(null, productList.get(position).getDescription(), "text/html", "utf-8", null);
-        textViews.get(0).setText(productList.get(position).getProductName());
-        textViews.get(1).setText(MainActivity.currency + " " + productList.get(position).getSellprice());
+        productQuantity = modelProductListList.get(position).getQuantity();
+        productDescWebView.loadDataWithBaseURL(null, modelProductListList.get(position).getDescription(), "text/html", "utf-8", null);
+        textViews.get(0).setText(modelProductListList.get(position).getProductName());
+        textViews.get(1).setText(MainActivity.currency + " " + modelProductListList.get(position).getSellprice());
         try {
-            double discountPercentage = Integer.parseInt(productList.get(position).getMrpprice()) - Integer.parseInt(productList.get(position).getSellprice());
+            double discountPercentage = Integer.parseInt(modelProductListList.get(position).getMrpprice()) - Integer.parseInt(modelProductListList.get(position).getSellprice());
 //            Log.d("percentage", discountPercentage + "");
-            discountPercentage = (discountPercentage / Integer.parseInt(productList.get(position).getMrpprice())) * 100;
+            discountPercentage = (discountPercentage / Integer.parseInt(modelProductListList.get(position).getMrpprice())) * 100;
             if ((int) Math.round(discountPercentage) > 0) {
                 textViews.get(3).setText(((int) Math.round(discountPercentage) + "% Off"));
             }
-            textViews.get(2).setText(MainActivity.currency + " " + productList.get(position).getMrpprice());
+            textViews.get(2).setText(MainActivity.currency + " " + modelProductListList.get(position).getMrpprice());
             textViews.get(2).setPaintFlags(textViews.get(2).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         } catch (Exception e) {
         }
-//        String[] sizeArray = productList.get(position).getSize().split(",");
-//        String[] colorArray = productList.get(position).getProductColor().split(",");
+//        String[] sizeArray = tModels.get(position).getSize().split(",");
+//        String[] colorArray = tModels.get(position).getProductColor().split(",");
 //        sizeList = new ArrayList<>(Arrays.asList(sizeArray));
 //        colorList = new ArrayList<>(Arrays.asList(colorArray));
-//        Log.d("sizeList", productList.get(position).getSize() + "");
-//        if (productList.get(position).getSize().length() > 0) {
+//        Log.d("sizeList", tModels.get(position).getSize() + "");
+//        if (tModels.get(position).getSize().length() > 0) {
 //            setSizeListData();
 //        } else {
 //            sizeCardView.setVisibility(View.GONE);
 //        }
-//        if (productList.get(position).getProductColor().length() > 0) {
+//        if (tModels.get(position).getProductColor().length() > 0) {
 //            setColorListData();
 //        } else {
 //            colorCardView.setVisibility(View.GONE);

@@ -14,6 +14,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.teocfish.teoc.activity.LoginActivity;
+import com.teocfish.teoc.activity.SignUp;
+import com.teocfish.teoc.utills.Config;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,8 +36,8 @@ public class MyProfile extends Fragment {
     @BindViews({R.id.fullNameEdt, R.id.mobEditText, R.id.cityEditText, R.id.areaEditText, R.id.buildingEditText, R.id.pincodeEditText, R.id.stateEditText, R.id.landmarkEditText,})
     List<EditText> editTexts;
     UserProfileResponse userProfileResponseData;
-    @BindView(R.id.submitBtn)
-    Button submitBtn;
+    @BindView(R.id.btnUpdate)
+    Button btnUpdate;
     @BindViews({R.id.male, R.id.female})
     List<CircleImageView> circleImageViews;
     String gender = "";
@@ -100,7 +104,7 @@ public class MyProfile extends Fragment {
         }
     }
 
-    @OnClick({R.id.male, R.id.female, R.id.submitBtn, R.id.logout, R.id.loginNow, R.id.txtSignUp, R.id.verfiyNow})
+    @OnClick({R.id.male, R.id.female, R.id.btnUpdate, R.id.logout, R.id.loginNow, R.id.txtSignUp, R.id.verfiyNow})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.male:
@@ -113,7 +117,7 @@ public class MyProfile extends Fragment {
                 circleImageViews.get(1).setImageResource(R.drawable.female_select);
                 gender = "female";
                 break;
-            case R.id.submitBtn:
+            case R.id.btnUpdate:
                 if (gender.equalsIgnoreCase("")) {
                     Config.showCustomAlertDialog(getActivity(), "Please choose your gender to update your profile", "",
                             SweetAlertDialog.ERROR_TYPE);
@@ -130,7 +134,7 @@ public class MyProfile extends Fragment {
                 logout();
                 break;
             case R.id.loginNow:
-                Config.moveTo(getActivity(), Login.class);
+                Config.moveTo(getActivity(), LoginActivity.class);
                 break;
             case R.id.txtSignUp:
                 Config.moveTo(getActivity(), SignUp.class);
@@ -160,9 +164,9 @@ public class MyProfile extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Common.saveUserData(getActivity(), "email", "");
-                Common.saveUserData(getActivity(), "userId", "");
-                Config.moveTo(getActivity(), Login.class);
+                SharedPrefManager.saveUserData(getActivity(), "email", "");
+                SharedPrefManager.saveUserData(getActivity(), "userId", "");
+                Config.moveTo(getActivity(), LoginActivity.class);
                 getActivity().finishAffinity();
 
             }

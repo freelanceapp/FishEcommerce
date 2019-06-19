@@ -20,6 +20,9 @@ import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.teocfish.teoc.utills.Config;
+import com.teocfish.teoc.utills.Constant;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -195,6 +198,7 @@ public class ChoosePaymentMethod extends Fragment {
                     public void success(UserProfileResponse userProfileResponse, Response response) {
                         progressBar.setVisibility(View.GONE);
                         userEmail=userProfileResponse.getEmail();
+                        Log.d(Constant.TAG, "UserProfileResponse : "+ userProfileResponse.getLandmark());
                         String s = "";
                         if (!userProfileResponse.getLandmark().equalsIgnoreCase("")) {
                             s = ", " + userProfileResponse.getLandmark();

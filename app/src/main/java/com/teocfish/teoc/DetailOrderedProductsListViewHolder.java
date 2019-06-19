@@ -14,7 +14,7 @@ public class DetailOrderedProductsListViewHolder extends RecyclerView.ViewHolder
     ImageView image1;
     TextView productName1,qty,price;
 
-    public DetailOrderedProductsListViewHolder(final Context context, View itemView, List<Product> productList) {
+    public DetailOrderedProductsListViewHolder(final Context context, View itemView, List<ModelProductList> modelProductListList) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         image1 = (ImageView) itemView.findViewById(R.id.productImage1);

@@ -60,7 +60,7 @@
                         android:drawablePadding="@dimen/_15sdp"
                         android:drawableTint="@color/light_black"
                         android:gravity="center_vertical"
-                        android:hint="Search for products..."
+                        android:hint="Search for modelProductLists..."
                         android:paddingLeft="@dimen/_20sdp" />
 
                     <SearchView

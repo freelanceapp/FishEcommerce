@@ -6,12 +6,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.teocfish.teoc.activity.LoginActivity;
+import com.teocfish.teoc.activity.SignUp;
+import com.teocfish.teoc.utills.Config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,7 @@ public class MyCartList extends Fragment {
     @BindView(R.id.categoryRecyclerView)
     RecyclerView productsRecyclerView;
     public static int categoryPosition = 0;
-    public static List<Product> productsData = new ArrayList<>();
+    public static List<ModelProductList> productsData = new ArrayList<ModelProductList>();
     public static CartistResponse cartistResponseData;
     @BindView(R.id.proceedToPayment)
     Button proceedToPayment;
@@ -78,7 +81,7 @@ public class MyCartList extends Fragment {
                 getActivity().finish();
                 break;
             case R.id.loginNow:
-                Config.moveTo(getActivity(), Login.class);
+                Config.moveTo(getActivity(), LoginActivity.class);
                 break;
             case R.id.txtSignUp:
                 Config.moveTo(getActivity(), SignUp.class);
@@ -108,15 +111,15 @@ public class MyCartList extends Fragment {
                 System.out.println("cartid"+cartistResponse.getCartid());
                 cartistResponseData = cartistResponse;
                 pDialog.dismiss();
-                productsData = new ArrayList<>();
-                productsData = cartistResponse.getProducts();
+                productsData = new ArrayList<ModelProductList>();
+                productsData = cartistResponse.getModelProductLists();
                 if (cartistResponse.getSuccess().equalsIgnoreCase("false")) {
                     verifyEmailLayout.setVisibility(View.VISIBLE);
                     proceedToPayment.setVisibility(View.GONE);
                 } else {
                     try {
 //                        Log.d("cartId", cartistResponse.getCartid());
-                        cartistResponse.getProducts().size();
+                        cartistResponse.getModelProductLists().size();
                         setProductsData();
                     } catch (Exception e) {
                         proceedToPayment.setVisibility(View.GONE);

@@ -32,7 +32,7 @@
                 android:drawableTint="@color/light_black"
                 android:drawableLeft="@drawable/search_icon1"
                 android:drawablePadding="@dimen/_15sdp"
-                android:hint="Search products..."
+                android:hint="Search modelProductLists..."
                 android:singleLine="true"
                 android:textSize="@dimen/_12ssp" />
         </RelativeLayout>

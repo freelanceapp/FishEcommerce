@@ -1,15 +1,23 @@
-package com.teocfish.teoc;
+package com.teocfish.teoc.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.teocfish.teoc.MainActivity;
+import com.teocfish.teoc.R;
+import com.teocfish.teoc.SharedPrefManager;
+import com.teocfish.teoc.SignUpResponse;
+import com.teocfish.teoc.Api;
+import com.teocfish.teoc.utills.Config;
+import com.teocfish.teoc.utills.Constant;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,7 +31,10 @@ import retrofit.client.Response;
 
 public class SignUp extends AppCompatActivity {
 
-    @BindViews({R.id.username, R.id.email, R.id.password, R.id.confirmPassword})
+    private String strEmail;
+    private String strName;
+    private String strLoginType;
+    @BindViews({R.id.username, R.id.etEmail, R.id.etPassword, R.id.confirmPassword})
     List<EditText> editTexts;
 
     @BindView(R.id.loginLinearLayout)
@@ -32,6 +43,11 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
+        strEmail = getIntent().getExtras().getString(Constant.USER_EMAIL);
+        strName = getIntent().getExtras().getString(Constant.USER_NAME);
+        strLoginType = getIntent().getExtras().getString(Constant.LOGIN_TYPE);
+        editTexts.get(0).setText(strName);
+        editTexts.get(1).setText(strEmail);
         loginLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,11 +65,11 @@ public class SignUp extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.txtSignIn:
-                Config.moveTo(SignUp.this, Login.class);
+                Config.moveTo(SignUp.this, LoginActivity.class);
                 finishAffinity();
                 break;
             case R.id.back:
-                Config.moveTo(SignUp.this, Login.class);
+                Config.moveTo(SignUp.this, LoginActivity.class);
                 finishAffinity();
                 break;
             case R.id.signUp:
@@ -103,7 +119,7 @@ public class SignUp extends AppCompatActivity {
         Api.getClient().registration(editTexts.get(0).getText().toString().trim(),
                 editTexts.get(1).getText().toString().trim(),
                 editTexts.get(2).getText().toString().trim(),
-                "email",
+                strLoginType,
                 new Callback<SignUpResponse>() {
                     @Override
                     public void success(SignUpResponse signUpResponse, Response response) {
@@ -112,8 +128,8 @@ public class SignUp extends AppCompatActivity {
                         Toast.makeText(SignUp.this, signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         if (signUpResponse.getSuccess().equalsIgnoreCase("true")) {
 
-                            Common.saveUserData(SignUp.this, "email", editTexts.get(1).getText().toString());
-                            Common.saveUserData(SignUp.this, "userId", signUpResponse.getUserid() + "");
+                            SharedPrefManager.saveUserData(SignUp.this, "email", editTexts.get(1).getText().toString());
+                            SharedPrefManager.saveUserData(SignUp.this, "userId", signUpResponse.getUserid() + "");
                             Intent intent = new Intent(SignUp.this, MainActivity.class);
                             intent.putExtra("from", "signUp");
                             startActivity(intent);

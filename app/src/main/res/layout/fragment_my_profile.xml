@@ -237,7 +237,7 @@
                 android:paddingTop="@dimen/_12sdp">
 
                 <Button
-                    android:id="@+id/submitBtn"
+                    android:id="@+id/btnUpdate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

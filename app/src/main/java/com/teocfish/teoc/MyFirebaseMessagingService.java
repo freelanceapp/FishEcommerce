@@ -22,6 +22,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Map;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 

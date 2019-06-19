@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.teocfish.teoc.utills.Config;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -259,12 +261,12 @@ public class Home extends Fragment {
     public void getAllProducts() {
 
         // getting news list data
-        Api.getClient().getAllProducts(new Callback<List<Product>>() {
+        Api.getClient().getAllProducts(new Callback<List<ModelProductList>>() {
             @Override
-            public void success(List<Product> allProducts, Response response) {
-//                Log.d("allProductsDataHome", allProducts.get(0).getProductName());
+            public void success(List<ModelProductList> allModelProductLists, Response response) {
+//                Log.d("allProductsDataHome", allModelProductLists.get(0).getProductName());
                 SplashScreen.allProductsData.clear();
-                SplashScreen.allProductsData.addAll(allProducts);
+                SplashScreen.allProductsData.addAll(allModelProductLists);
                 getCategoryList();
             }
 

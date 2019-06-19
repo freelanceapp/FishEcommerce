@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 
+import com.teocfish.teoc.utills.Config;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,7 +36,7 @@ public class ProductsList extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_category_list, container, false);
         ButterKnife.bind(this, view);
-        MainActivity.title.setText(SplashScreen.categoryListResponseData.get(categoryPosition).getCategory_name());
+        MainActivity.title.setText(SplashScreen.categoryListResponseData.get(categoryPosition).getCategoryName());
         setProductsData();
         contShopping.setOnClickListener(new View.OnClickListener() {
             @Override

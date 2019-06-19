@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+
+import com.teocfish.teoc.utills.Config;
+import com.teocfish.teoc.utills.Constant;
 
 import java.util.List;
 
@@ -71,7 +73,8 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersViewHolder> {
 
     private void setProductsData(MyOrdersViewHolder holder, int position)
     {
-        Log.d("orderProducts", orderes.get(position).getOrdredproduct().size() + "");
+        Log.d(Constant.TAG, orderes.get(position).getOrdredproduct() + "");
+//        Log.d(Constant.TAG, orderes.get(position).getOrdredproduct().size() + "");
         GridLayoutManager gridLayoutManager;
         gridLayoutManager = new GridLayoutManager(context, 1);
         holder.orderedProductsRecyclerView.setLayoutManager(gridLayoutManager);

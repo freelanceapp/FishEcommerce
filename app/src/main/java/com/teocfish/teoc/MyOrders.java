@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 
+import com.teocfish.teoc.activity.LoginActivity;
+import com.teocfish.teoc.activity.SignUp;
+import com.teocfish.teoc.utills.Config;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,7 +63,7 @@ public class MyOrders extends Fragment {
                 getActivity().finish();
                 break;
             case R.id.loginNow:
-                Config.moveTo(getActivity(), Login.class);
+                Config.moveTo(getActivity(), LoginActivity.class);
                 break;
             case R.id.txtSignUp:
                 Config.moveTo(getActivity(), SignUp.class);

@@ -3,10 +3,10 @@ package com.teocfish.teoc;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
+import com.teocfish.teoc.utills.Config;
 
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ public class RazorPayIntegration extends AppCompatActivity implements PaymentRes
         try {
             JSONObject options = new JSONObject();
             options.put("name", getResources().getString(R.string.app_name));
-            options.put("description", "Payment for "+ MyCartList.cartistResponseData.getProducts().size()+" products");
+            options.put("description", "Payment for "+ MyCartList.cartistResponseData.getModelProductLists().size()+" products");
             //You can omit the image option to fetch the image from dashboard
             options.put("image", "https://rzp-mobile.s3.amazonaws.com/images/rzp.png");
             options.put("currency", "INR");

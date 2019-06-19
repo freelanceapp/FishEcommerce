@@ -2,11 +2,14 @@ package com.teocfish.teoc;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.teocfish.teoc.activity.LoginActivity;
+import com.teocfish.teoc.activity.SignUp;
+import com.teocfish.teoc.utills.Config;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +23,7 @@ public class AccountVerification extends AppCompatActivity {
 
     @BindView(R.id.resendEmail)
     Button resendEmail;
-    @BindView(R.id.email)
+    @BindView(R.id.etEmail)
     EditText email;
 
     @Override
@@ -42,7 +45,7 @@ public class AccountVerification extends AppCompatActivity {
                 Config.moveTo(AccountVerification.this, SignUp.class);
                 break;
             case R.id.login:
-                Config.moveTo(AccountVerification.this, Login.class);
+                Config.moveTo(AccountVerification.this, LoginActivity.class);
                 break;
             case R.id.back:
                 finish();

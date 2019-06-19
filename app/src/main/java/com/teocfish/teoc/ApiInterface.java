@@ -14,7 +14,7 @@ public interface ApiInterface {
     // API's endpoints
     @GET("/JSON/allproducts.php")
     public void getAllProducts(
-            Callback<List<Product>> callback);
+            Callback<List<ModelProductList>> callback);
 
     @GET("/JSON/pbyc.php")
     public void getCategoryList(Callback<List<CategoryListResponse>> callback);
@@ -30,7 +30,8 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/JSON/pushadd.php")
-    public void sendAccessToken(@Field("accesstoken") String accesstoken, Callback<RegistrationResponse> callback);
+    public void sendAccessToken(@Field("accesstoken") String accesstoken,
+                                Callback<RegistrationResponse> callback);
 
     @FormUrlEncoded
     @POST("/JSON/addwishlist.php")
@@ -39,7 +40,8 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/JSON/add_cart.php")
-    public void addToCart(@Field("product_id") String product_id, @Field("userid") String user_id,
+    public void addToCart(@Field("product_id") String product_id,
+                          @Field("userid") String user_id,
                           @Field("cartquantity") String cartquantity,
                           Callback<AddToWishlistResponse> callback);
 
@@ -61,7 +63,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/JSON/product.php")
-    public void getProductDetails(@Field("product_id") String product_id, Callback<Product> callback);
+    public void getProductDetails(@Field("product_id") String product_id, Callback<ModelProductList> callback);
 
 
     @FormUrlEncoded
@@ -121,7 +123,7 @@ public interface ApiInterface {
 
 @FormUrlEncoded
 @GET("/JSON/order-cancel.php")
-public void ordercancel(@Field("id") String id,
+public void  ordercancel(@Field("id") String id,
                         @Field("order_case") String order_case,
                         Callback<SignUpResponse> callback);
 
@@ -133,7 +135,11 @@ public void ordercancel(@Field("id") String id,
 
     @FormUrlEncoded
     @POST("/JSON/register.php")
-    public void registration(@Field("name") String name, @Field("email") String email, @Field("password") String password, @Field("logintype") String logintype, Callback<SignUpResponse> callback);
+    public void registration(@Field("name") String name,
+                             @Field("email") String email,
+                             @Field("password") String password,
+                             @Field("logintype") String logintype,
+                             Callback<SignUpResponse> callback);
 
 
 }
