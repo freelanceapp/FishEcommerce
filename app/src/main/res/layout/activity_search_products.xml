@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:tContext="com.teocfish.teoc.SearchProducts">
+    tools:tContext="com.teocfish.teoc_fish_pvt_ltd.SearchProducts">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"

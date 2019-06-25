@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.teocfish.teoc"
+    package="com.teocfish.teoc_fish_pvt_ltd"
     android:versionCode="2"
     android:versionName="2.0">
 
@@ -35,10 +35,10 @@
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="android:icon">
         <activity
-            android:name=".MainActivity"
+            android:name="com.teocfish.teoc_fish_pvt_ltd.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashScreen"
+            android:name="com.teocfish.teoc_fish_pvt_ltd.SplashScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -48,21 +48,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="com.teocfish.teoc_fish_pvt_ltd.activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.SignUp"
+            android:name="com.teocfish.teoc_fish_pvt_ltd.activity.SignUp"
             android:screenOrientation="portrait" />
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".OptionalImageFullView" />
-        <activity android:name=".OrderConfirmed" />
-        <activity android:name=".RazorPayIntegration" />
+        <activity android:name="com.teocfish.teoc_fish_pvt_ltd.ForgotPassword" />
+        <activity android:name="com.teocfish.teoc_fish_pvt_ltd.OptionalImageFullView" />
+        <activity android:name="com.teocfish.teoc_fish_pvt_ltd.OrderConfirmed" />
+        <activity android:name="com.teocfish.teoc_fish_pvt_ltd.RazorPayIntegration" />
 
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_K6veGqYGkoWgi1" />
 
-        <service android:name=".MyFirebaseMessagingService"
+        <service android:name="com.teocfish.teoc_fish_pvt_ltd.MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND"
             android:enabled="true"
             android:exported="false">
@@ -70,7 +70,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".AccountVerification" />
+        <activity android:name="com.teocfish.teoc_fish_pvt_ltd.AccountVerification" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -100,7 +100,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".DeliveryLocation"
+            android:name="com.teocfish.teoc_fish_pvt_ltd.DeliveryLocation"
             android:label="@string/title_activity_delivery_location" />
 
         <meta-data
@@ -109,7 +109,7 @@
         <meta-data
             android:name="net.hockeyapp.android.appIdentifier"
             android:value="f3a50de6e57345ebbfa81be3577f6a0e" />
-        <activity android:name=".OrderCanceled" />
+        <activity android:name="com.teocfish.teoc_fish_pvt_ltd.OrderCanceled" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:tContext="com.teocfish.teoc.OrderCanceled">
+    tools:tContext="com.teocfish.teoc_fish_pvt_ltd.OrderCanceled">
 
     <ImageView
         android:layout_width="wrap_content"

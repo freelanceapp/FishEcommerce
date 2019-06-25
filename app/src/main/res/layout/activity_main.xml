@@ -8,13 +8,13 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:fitsSystemWindows="true"
-    tools:tContext="com.teocfish.teoc.MainActivity">
+    tools:tContext="com.teocfish.teoc_fish_pvt_ltd.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
-        tools:tContext="com.teocfish.teoc.MainActivity">
+        tools:tContext="com.teocfish.teoc_fish_pvt_ltd.MainActivity">
 
         <FrameLayout
             android:id="@+id/frameLayout"

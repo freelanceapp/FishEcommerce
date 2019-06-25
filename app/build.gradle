@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId "com.teocfish.teoc"
+        applicationId "com.teocfish.teoc_fish_pvt_ltd"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 3
