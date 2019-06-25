@@ -261,12 +261,12 @@ public class Home extends Fragment {
     public void getAllProducts() {
 
         // getting news list data
-        Api.getClient().getAllProducts(new Callback<List<ModelProductList>>() {
+        Api.getClient().getAllProducts(new Callback<List<Product>>() {
             @Override
-            public void success(List<ModelProductList> allModelProductLists, Response response) {
-//                Log.d("allProductsDataHome", allModelProductLists.get(0).getProductName());
+            public void success(List<Product> allProducts, Response response) {
+//                Log.d("allProductsDataHome", allProducts.get(0).getProductName());
                 SplashScreen.allProductsData.clear();
-                SplashScreen.allProductsData.addAll(allModelProductLists);
+                SplashScreen.allProductsData.addAll(allProducts);
                 getCategoryList();
             }
 

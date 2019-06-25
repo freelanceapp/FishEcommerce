@@ -13,26 +13,17 @@ public class MyOrdersViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.orderedProductsRecyclerView)
     RecyclerView orderedProductsRecyclerView;
-    @BindView(R.id.viewOrderDetails)
-    TextView viewOrderDetails;
     @BindView(R.id.date)
     TextView date;
-    @BindView(R.id.orderCancel)
-    Button Order_Cancel;
+    @BindView(R.id.btnOrderCancel)
+    Button btnCancelOrder;
+//    @BindView(R.id.tvWriteReview)
+//    Button tvWriteReview;
     public static int pos;
 
     public MyOrdersViewHolder(final Context context, View itemView)
     {
         super(itemView);
         ButterKnife.bind(this,itemView);
-        Order_Cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                System.out.println("Orderid"+MyOrderedProductsDetailPage.orderes.get(pos).getOrderid());
-////                System.out.println(MyCartList.cartistResponseData.getCartid());
-//                Config.ordercancel(context,"COD","COD");
-////                Config.moveTo(context,OrderCanceled.class);
-            }
-        });
     }
 }

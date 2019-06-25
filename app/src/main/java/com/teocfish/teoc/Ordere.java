@@ -11,10 +11,13 @@ public class Ordere {
     private String paymentmode;
     private String paymenref;
     private String paymenstatus;
+
+
+    private String orderstatus;
     private String date;
     private String total;
     private String address;
-    private List<ModelProductList> ordredproduct = null;
+    private List<Product> ordredproduct = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 
@@ -53,8 +56,16 @@ public class Ordere {
         return paymenstatus;
     }
 
+
     public void setPaymenstatus(String paymenstatus) {
         this.paymenstatus = paymenstatus;
+    }
+    public String getOrderstatus() {
+        return orderstatus;
+    }
+
+    public void setOrderstatus(String orderstatus) {
+        this.orderstatus = orderstatus;
     }
 
     public String getDate() {
@@ -73,11 +84,11 @@ public class Ordere {
         this.total = total;
     }
 
-    public List<ModelProductList> getOrdredproduct() {
+    public List<Product> getOrdredproduct() {
         return ordredproduct;
     }
 
-    public void setOrdredproduct(List<ModelProductList> ordredproduct) {
+    public void setOrdredproduct(List<Product> ordredproduct) {
         this.ordredproduct = ordredproduct;
     }
 

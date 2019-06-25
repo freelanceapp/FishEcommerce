@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import com.teocfish.teoc.activity.LoginActivity;
 import com.teocfish.teoc.activity.SignUp;
 import com.teocfish.teoc.utills.Config;
+import com.teocfish.teoc.utills.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +36,8 @@ public class MyCartList extends Fragment {
     @BindView(R.id.categoryRecyclerView)
     RecyclerView productsRecyclerView;
     public static int categoryPosition = 0;
-    public static List<ModelProductList> productsData = new ArrayList<ModelProductList>();
-    public static CartistResponse cartistResponseData;
+    public static List<Product> productsData = new ArrayList<Product>();
+    public static CartListResponse cartListResponseData;
     @BindView(R.id.proceedToPayment)
     Button proceedToPayment;
     public static Context context;
@@ -105,25 +107,26 @@ public class MyCartList extends Fragment {
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);
         pDialog.show();
-        Api.getClient().getCartList(MainActivity.userId, new Callback<CartistResponse>() {
+        Api.getClient().getCartList(MainActivity.userId, new Callback<CartListResponse>() {
             @Override
-            public void success(CartistResponse cartistResponse, Response response) {
-                System.out.println("cartid"+cartistResponse.getCartid());
-                cartistResponseData = cartistResponse;
+            public void success(CartListResponse cartListResponse, Response response) {
+                System.out.println("cartid"+ cartListResponse.getCartid());
+                cartListResponseData = cartListResponse;
                 pDialog.dismiss();
-                productsData = new ArrayList<ModelProductList>();
-                productsData = cartistResponse.getModelProductLists();
-                if (cartistResponse.getSuccess().equalsIgnoreCase("false")) {
+                productsData = new ArrayList<Product>();
+                productsData = cartListResponse.getProducts();
+                if (cartListResponse.getSuccess().equalsIgnoreCase("false")) {
                     verifyEmailLayout.setVisibility(View.VISIBLE);
                     proceedToPayment.setVisibility(View.GONE);
                 } else {
                     try {
-//                        Log.d("cartId", cartistResponse.getCartid());
-                        cartistResponse.getModelProductLists().size();
+//                        Log.d("cartId", cartListResponse.getCartid());
+                        cartListResponse.getProducts().size();
                         setProductsData();
                     } catch (Exception e) {
                         proceedToPayment.setVisibility(View.GONE);
                         emptyCartLayout.setVisibility(View.VISIBLE);
+                        Log.e(Constant.TAG, "Cart Error : "+e);
                     }
                 }
             }

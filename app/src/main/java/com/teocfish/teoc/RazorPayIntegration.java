@@ -30,7 +30,7 @@ public class RazorPayIntegration extends AppCompatActivity implements PaymentRes
         try {
             JSONObject options = new JSONObject();
             options.put("name", getResources().getString(R.string.app_name));
-            options.put("description", "Payment for "+ MyCartList.cartistResponseData.getModelProductLists().size()+" products");
+            options.put("description", "Payment for "+ MyCartList.cartListResponseData.getProducts().size()+" products");
             //You can omit the image option to fetch the image from dashboard
             options.put("image", "https://rzp-mobile.s3.amazonaws.com/images/rzp.png");
             options.put("currency", "INR");

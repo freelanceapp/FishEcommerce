@@ -5,16 +5,16 @@ import java.util.Map;
 
 public class SliderListResponse {
 
-    private ModelProductList productsdetails;
+    private Product productsdetails;
     private String id;
     private String bannerimage;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public ModelProductList getProductsdetails() {
+    public Product getProductsdetails() {
         return productsdetails;
     }
 
-    public void setProductsdetails(ModelProductList productsdetails) {
+    public void setProductsdetails(Product productsdetails) {
         this.productsdetails = productsdetails;
     }
 

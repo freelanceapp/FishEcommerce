@@ -34,7 +34,7 @@ public class MyWishList extends Fragment {
     @BindView(R.id.categoryRecyclerView)
     RecyclerView productsRecyclerView;
     public static int categoryPosition = 0;
-    public static List<ModelProductList> productsData = new ArrayList<ModelProductList>();
+    public static List<Product> productsData = new ArrayList<Product>();
     @BindView(R.id.emptyWishlistLayout)
     LinearLayout emptyWishlistLayout;
     @BindView(R.id.loginLayout)
@@ -91,7 +91,7 @@ public class MyWishList extends Fragment {
                 try {
                     if (wishlistResponse.getSuccess().equalsIgnoreCase("true")) {
 
-//                        Log.d("cartId", wishlistResponse.getModelProductLists().size() + "");
+//                        Log.d("cartId", wishlistResponse.getProducts().size() + "");
                         productsData.clear();
                         productsData = wishlistResponse.getProducts();
                         setProductsData();

@@ -17,6 +17,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.teocfish.teoc.utills.Config;
@@ -41,25 +42,15 @@ public class ProductDetail extends Fragment {
     int position;
     @BindView(R.id.dotsRecyclerView)
     RecyclerView dotsRecyclerView;
-    //    @BindView(R.id.sizeRecyclerView)
-//    RecyclerView sizeRecyclerView;
-//    @BindView(R.id.colorRecyclerView)
-//    RecyclerView colorRecyclerView;
     public static DotsAdapter dotsAdapter;
     Activity activity;
     ArrayList<String> sliderImages = new ArrayList<>();
     @BindViews({R.id.productName, R.id.price, R.id.actualPrice, R.id.discountPercentage, R.id.quantity, R.id.status})
     List<TextView> textViews;
-    public static List<ModelProductList> modelProductListList = new ArrayList<>();
-    //    ArrayList<String> sizeList = new ArrayList<>();
-//    ArrayList<String> colorList = new ArrayList<>();
+    public static List<Product> productList = new ArrayList<>();
     @BindView(R.id.productDescWebView)
     WebView productDescWebView;
     TextView addToWishList;
-    //    @BindView(R.id.sizeCardView)
-//    CardView sizeCardView;
-//    @BindView(R.id.colorCardView)
-//    CardView colorCardView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     @BindView(R.id.progressBar1)
@@ -68,6 +59,15 @@ public class ProductDetail extends Fragment {
     public static String productQuantity;
     @BindView(R.id.noImageAdded)
     ImageView noImageAdded;
+
+    @BindView(R.id.ratingProducts)
+    protected RatingBar ratingProducts;
+    @BindView(R.id.total_rating)
+    protected TextView total_rating;
+    @BindView(R.id.total_ratings_txt)
+    protected TextView total_rating_txt;
+    @BindView(R.id.rb_rateProdDetail)
+    protected RatingBar rb_rateProdDetail;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -109,7 +109,7 @@ public class ProductDetail extends Fragment {
                     } else if (addToCart.getText().toString().trim().equalsIgnoreCase("Out of Stock")) {
                         Config.showCustomAlertDialog(getActivity(),
                                 "Out Of Stock",
-                                "This ModelProductList is out of stock.",
+                                "This Product is out of stock.",
                                 SweetAlertDialog.ERROR_TYPE);
 
                     } else {
@@ -133,7 +133,7 @@ public class ProductDetail extends Fragment {
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);
         pDialog.show();
-        Api.getClient().addToWishList(modelProductListList.get(position).getProductId(),
+        Api.getClient().addToWishList(productList.get(position).getProductId(),
                 MainActivity.userId,
                 new Callback<AddToWishlistResponse>() {
                     @Override
@@ -183,7 +183,7 @@ public class ProductDetail extends Fragment {
         pDialog.setTitleText("Loading");
         pDialog.setCancelable(false);
         pDialog.show();
-        Api.getClient().addToCart(modelProductListList.get(position).getProductId(),
+        Api.getClient().addToCart(productList.get(position).getProductId(),
                 MainActivity.userId, "1",
                 new Callback<AddToWishlistResponse>() {
                     @Override
@@ -230,7 +230,7 @@ public class ProductDetail extends Fragment {
     private void checkWishList() {
         progressBar.setVisibility(View.VISIBLE);
         addToWishList.setVisibility(View.GONE);
-        Api.getClient().checkWishList(modelProductListList.get(position).getProductId(),
+        Api.getClient().checkWishList(productList.get(position).getProductId(),
                 MainActivity.userId,
                 new Callback<AddToWishlistResponse>() {
                     @Override
@@ -259,22 +259,35 @@ public class ProductDetail extends Fragment {
     private void getProductDetails() {
         progressBar1.setVisibility(View.VISIBLE);
         addToCart.setVisibility(View.GONE);
-        Api.getClient().getProductDetails(modelProductListList.get(position).getProductId(),
-                new Callback<ModelProductList>() {
+        Api.getClient().getProductDetails(productList.get(position).getProductId(),
+                new Callback<Product>() {
                     @Override
-                    public void success(ModelProductList modelProductList, Response response) {
+                    public void success(Product product, Response response) {
 
                         progressBar1.setVisibility(View.GONE);
                         addToCart.setVisibility(View.VISIBLE);
-//                        Log.d("productDetailsResponse", modelProductList.getProductId() + "" + modelProductList.toString());
-                        if (Integer.parseInt(modelProductList.getQuantity()) < 1) {
+
+                        String strRate = product.getAvg_rating();
+                        if (strRate != null && !strRate.isEmpty() && !strRate.equals("null")) {
+                            rb_rateProdDetail.setRating(Float.parseFloat(strRate));
+                            total_rating.setText(strRate);
+                        } else {
+                            rb_rateProdDetail.setVisibility(View.GONE);
+                            total_rating.setVisibility(View.GONE);
+                        }
+                        if (product.getRate_count().equals("0")){
+                            total_rating.setVisibility(View.GONE);
+                        }
+                        total_rating_txt.setText(product.getRate_count() +" ratings");
+//                        Log.d("productDetailsResponse", product.getProductId() + "" + product.toString());
+                        if (Integer.parseInt(product.getQuantity()) < 1) {
                             textViews.get(4).setText("Out of Stock");
                             addToCart.setBackgroundColor(Color.parseColor("#80148cbf"));
                             addToCart.setText("Out of Stock");
-                        } else if (Integer.parseInt(modelProductList.getQuantity()) > 0 && Integer.parseInt(modelProductList.getQuantity()) < 10) {
-                            textViews.get(4).setText("Hurry, only " + modelProductList.getQuantity() + " left");
+                        } else if (Integer.parseInt(product.getQuantity()) > 0 && Integer.parseInt(product.getQuantity()) < 10) {
+                            textViews.get(4).setText("Hurry, only " + product.getQuantity() + " left");
                         } else textViews.get(4).setVisibility(View.GONE);
-                        textViews.get(5).setText(modelProductList.getStatus());
+                        textViews.get(5).setText(product.getStatus());
 
                     }
 
@@ -304,28 +317,11 @@ public class ProductDetail extends Fragment {
         MainActivity.search.setVisibility(View.GONE);
     }
 
-//    public void setSizeListData() {
-//        FlowLayoutManager flowLayoutManager = new FlowLayoutManager();
-//        flowLayoutManager.setAutoMeasureEnabled(true);
-//        sizeRecyclerView.setLayoutManager(flowLayoutManager);
-//        SizeListAdapter topListAdapter = new SizeListAdapter(getActivity(), sizeList);
-//        sizeRecyclerView.setAdapter(topListAdapter);
-//    }
-//
-//    public void setColorListData() {
-//        FlowLayoutManager flowLayoutManager = new FlowLayoutManager();
-//        flowLayoutManager.setAutoMeasureEnabled(true);
-//        colorRecyclerView.setLayoutManager(flowLayoutManager);
-//        ColorListAdapter topListAdapter = new ColorListAdapter(getActivity(), colorList);
-//        colorRecyclerView.setAdapter(topListAdapter);
-//    }
 
     private void setData() {
-//        tModels.addAll(SplashScreen.categoryListResponseData.get(parentPosition).getModelProductLists());
-//        Log.d("productId", tModels.get(position).getProductId());
         sliderImages = new ArrayList<>();
         try {
-            sliderImages.addAll(modelProductListList.get(position).getImages());
+            sliderImages.addAll(productList.get(position).getImages());
             if (sliderImages.size() > 0) {
                 init();
                 noImageAdded.setVisibility(View.GONE);
@@ -337,36 +333,21 @@ public class ProductDetail extends Fragment {
             noImageAdded.setVisibility(View.VISIBLE);
         }
         setDots(0);
-        productQuantity = modelProductListList.get(position).getQuantity();
-        productDescWebView.loadDataWithBaseURL(null, modelProductListList.get(position).getDescription(), "text/html", "utf-8", null);
-        textViews.get(0).setText(modelProductListList.get(position).getProductName());
-        textViews.get(1).setText(MainActivity.currency + " " + modelProductListList.get(position).getSellprice());
+        productQuantity = productList.get(position).getQuantity();
+        productDescWebView.loadDataWithBaseURL(null, productList.get(position).getDescription(), "text/html", "utf-8", null);
+        textViews.get(0).setText(productList.get(position).getProductName());
+        textViews.get(1).setText(MainActivity.currency + " " + productList.get(position).getSellprice());
         try {
-            double discountPercentage = Integer.parseInt(modelProductListList.get(position).getMrpprice()) - Integer.parseInt(modelProductListList.get(position).getSellprice());
+            double discountPercentage = Integer.parseInt(productList.get(position).getMrpprice()) - Integer.parseInt(productList.get(position).getSellprice());
 //            Log.d("percentage", discountPercentage + "");
-            discountPercentage = (discountPercentage / Integer.parseInt(modelProductListList.get(position).getMrpprice())) * 100;
+            discountPercentage = (discountPercentage / Integer.parseInt(productList.get(position).getMrpprice())) * 100;
             if ((int) Math.round(discountPercentage) > 0) {
                 textViews.get(3).setText(((int) Math.round(discountPercentage) + "% Off"));
             }
-            textViews.get(2).setText(MainActivity.currency + " " + modelProductListList.get(position).getMrpprice());
+            textViews.get(2).setText(MainActivity.currency + " " + productList.get(position).getMrpprice());
             textViews.get(2).setPaintFlags(textViews.get(2).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         } catch (Exception e) {
         }
-//        String[] sizeArray = tModels.get(position).getSize().split(",");
-//        String[] colorArray = tModels.get(position).getProductColor().split(",");
-//        sizeList = new ArrayList<>(Arrays.asList(sizeArray));
-//        colorList = new ArrayList<>(Arrays.asList(colorArray));
-//        Log.d("sizeList", tModels.get(position).getSize() + "");
-//        if (tModels.get(position).getSize().length() > 0) {
-//            setSizeListData();
-//        } else {
-//            sizeCardView.setVisibility(View.GONE);
-//        }
-//        if (tModels.get(position).getProductColor().length() > 0) {
-//            setColorListData();
-//        } else {
-//            colorCardView.setVisibility(View.GONE);
-//        }
 
     }
 

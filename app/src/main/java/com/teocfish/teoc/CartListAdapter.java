@@ -26,45 +26,45 @@ import retrofit.client.Response;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
     Context context;
-    List<ModelProductList> modelProductListList;
+    List<Product> productList;
     double totalAmount = 0f, amountPayable;
     public static String totalAmountPayable;
     double tax=0f;
-    public CartListAdapter(Context context, List<ModelProductList> modelProductListList) {
+    public CartListAdapter(Context context, List<Product> productList) {
         this.context = context;
-        this.modelProductListList = modelProductListList;
+        this.productList = productList;
     }
 
     @Override
     public CartListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.cart_list_items, null);
-        CartListViewHolder CartListViewHolder = new CartListViewHolder(context, view, modelProductListList);
+        CartListViewHolder CartListViewHolder = new CartListViewHolder(context, view, productList);
         return CartListViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final CartListViewHolder holder, final int position)
     {
-        totalAmount = totalAmount + (Double.parseDouble(modelProductListList.get(position).getSellprice()) * Double.parseDouble(modelProductListList.get(position).getQuantity()));
-        if (position == modelProductListList.size() - 1) {
+        totalAmount = totalAmount + (Double.parseDouble(productList.get(position).getSellprice()) * Double.parseDouble(productList.get(position).getQuantity()));
+        if (position == productList.size() - 1) {
             holder.totalAmount.setVisibility(View.VISIBLE);
             holder.txtGurantee.setText(Html.fromHtml(context.getResources().getString(R.string.secure_payment_text)));
 
-            holder.textViews.get(0).setText("Price (" + modelProductListList.size() + " items)");
+            holder.textViews.get(0).setText("Price (" + productList.size() + " items)");
             holder.textViews.get(1).setText(MainActivity.currency + " " + totalAmount);
-            if (MyCartList.cartistResponseData.getShipping().length()>0) {
+            if (MyCartList.cartListResponseData.getShipping().length()>0) {
 
-                holder.textViews.get(2).setText(MainActivity.currency + " " + MyCartList.cartistResponseData.getShipping());
+                holder.textViews.get(2).setText(MainActivity.currency + " " + MyCartList.cartListResponseData.getShipping());
                 amountPayable = totalAmount +
-                        Double.parseDouble(MyCartList.cartistResponseData.getShipping());
+                        Double.parseDouble(MyCartList.cartListResponseData.getShipping());
             }else {
                 amountPayable=totalAmount;
                 holder.textViews.get(2).setText(MainActivity.currency + " 0.0");
 
             }
-            if (MyCartList.cartistResponseData.getTax().length()>0) {
-                tax = (totalAmount / 100) * Double.parseDouble(MyCartList.cartistResponseData.getTax());
-                holder.textViews.get(5).setText("Tax (" + MyCartList.cartistResponseData.getTax() + "%)");
+            if (MyCartList.cartListResponseData.getTax().length()>0) {
+                tax = (totalAmount / 100) * Double.parseDouble(MyCartList.cartListResponseData.getTax());
+                holder.textViews.get(5).setText("Tax (" + MyCartList.cartListResponseData.getTax() + "%)");
             }
             tax = Double.parseDouble(String.format("%.2f", tax));
 //            Log.d("floatTax", tax + "");
@@ -75,36 +75,36 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
         } else
             holder.totalAmount.setVisibility(View.GONE);
 
-        holder.productName1.setText(modelProductListList.get(position).getProductName());
-        holder.price1.setText(MainActivity.currency + " " + modelProductListList.get(position).getSellprice());
-        holder.quantity.setText("Qty: " + modelProductListList.get(position).getQuantity());
+        holder.productName1.setText(productList.get(position).getProductName());
+        holder.price1.setText(MainActivity.currency + " " + productList.get(position).getSellprice());
+        holder.quantity.setText("Qty: " + productList.get(position).getQuantity());
         try {
             Picasso.with(context)
-                    .load(modelProductListList.get(position).getImages().get(0))
+                    .load(productList.get(position).getImages().get(0))
                     .resize(Integer.parseInt(context.getResources().getString(R.string.cartImageWidth)),Integer.parseInt(context.getResources().getString(R.string.cartImageWidth)))
                     .placeholder(R.drawable.defaultimage)
                     .into(holder.image1);
         } catch (Exception e) {
         }
 
-//        if (!modelProductListList.get(position).getSize().equalsIgnoreCase("")) {
-//            Log.d("size", modelProductListList.get(position).getSize());
-//            holder.size.setText("Size: " + modelProductListList.get(position).getSize());
+//        if (!productList.get(position).getSize().equalsIgnoreCase("")) {
+//            Log.d("size", productList.get(position).getSize());
+//            holder.size.setText("Size: " + productList.get(position).getSize());
 //            holder.size.setVisibility(View.VISIBLE);
 //        } else {
 //            holder.size.setVisibility(View.GONE);
 //        }
-//        if (!modelProductListList.get(position).getProductColor().equalsIgnoreCase("")) {
-//            Log.d("color", modelProductListList.get(position).getProductColor());
-//            holder.color.setText("Color: " + modelProductListList.get(position).getProductColor());
+//        if (!productList.get(position).getProductColor().equalsIgnoreCase("")) {
+//            Log.d("color", productList.get(position).getProductColor());
+//            holder.color.setText("Color: " + productList.get(position).getProductColor());
 //            holder.color.setVisibility(View.VISIBLE);
 //        } else {
 //            holder.color.setVisibility(View.GONE);
 //        }
         try {
-            double discountPercentage = Integer.parseInt(modelProductListList.get(position).getMrpprice()) - Integer.parseInt(modelProductListList.get(position).getSellprice());
+            double discountPercentage = Integer.parseInt(productList.get(position).getMrpprice()) - Integer.parseInt(productList.get(position).getSellprice());
 //            Log.d("percentage", discountPercentage + "");
-            discountPercentage = (discountPercentage / Integer.parseInt(modelProductListList.get(position).
+            discountPercentage = (discountPercentage / Integer.parseInt(productList.get(position).
 
                     getMrpprice())) * 100;
             if ((int) Math.round(discountPercentage) > 0)
@@ -112,7 +112,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
             {
                 holder.discountPercentage1.setText(((int) Math.round(discountPercentage) + "% Off"));
             }
-            holder.actualPrice1.setText(MainActivity.currency + " " + modelProductListList.get(position).getMrpprice());
+            holder.actualPrice1.setText(MainActivity.currency + " " + productList.get(position).getMrpprice());
             holder.actualPrice1.setPaintFlags(holder.actualPrice1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         } catch (Exception e) {
@@ -122,8 +122,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
         {
             @Override
             public void onClick(View view) {
-                ProductDetail.modelProductListList.clear();
-                ProductDetail.modelProductListList.addAll(modelProductListList);
+                ProductDetail.productList.clear();
+                ProductDetail.productList.addAll(productList);
                 ProductDetail productDetail = new ProductDetail();
                 Bundle bundle = new Bundle();
                 bundle.putInt("position", position);
@@ -143,8 +143,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
         popupMenu.getMenuInflater().
 
                 inflate(R.menu.textview_popup_menu, popupMenu.getMenu());
-//        Log.d("productQuantity", Integer.parseInt(modelProductListList.get(position).getQuantity()) + "");
-        for (int i = 1; i <= Integer.parseInt(modelProductListList.get(position).getPlimit()); i++)
+//        Log.d("productQuantity", Integer.parseInt(productList.get(position).getQuantity()) + "");
+        for (int i = 1; i <= Integer.parseInt(productList.get(position).getPlimit()); i++)
 
         {
             popupMenu.getMenu().add(i + "");
@@ -155,7 +155,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
 
-                if (!modelProductListList.get(position).getQuantity().trim().equalsIgnoreCase(menuItem.getTitle().toString().trim())) {
+                if (!productList.get(position).getQuantity().trim().equalsIgnoreCase(menuItem.getTitle().toString().trim())) {
                     holder.quantity.setText("Qty: " + menuItem.getTitle() + "");
                     updateCart(position, menuItem.getTitle().toString());
                 }
@@ -176,7 +176,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
 
     @Override
     public int getItemCount() {
-        return modelProductListList.size();
+        return productList.size();
     }
 
     private void updateCart(final int position, final String quantity) {
@@ -187,14 +187,14 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListViewHolder> {
         progressDialog.show();
         Api.getClient().updateCart(
                 quantity,
-                modelProductListList.get(position).getIteam_id(),
+                productList.get(position).getIteam_id(),
                 new Callback<AddToWishlistResponse>() {
                     @Override
                     public void success(AddToWishlistResponse addToWishlistResponse, Response response) {
                         progressDialog.dismiss();
 //                        Log.d("addToCartResponse", addToWishlistResponse.getSuccess() + "");
                         if (addToWishlistResponse.getSuccess().equalsIgnoreCase("true")) {
-//                            Config.getCartList(context);
+//                            Config.getCartList(tContext);
                             ((MainActivity) context).loadFragment(new MyCartList(), false);
 
                             Config.showCustomAlertDialog(context,

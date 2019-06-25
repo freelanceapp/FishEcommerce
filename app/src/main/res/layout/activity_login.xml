@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbackground"
-    tools:context="com.teocfish.teoc.activity.LoginActivity">
+    android:background="@color/white"
+    tools:tContext="com.teocfish.teoc.activity.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,8 +42,8 @@
                     android:paddingBottom="@dimen/_12sdp"
                     android:paddingLeft="@dimen/_4sdp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/colorGrey2" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -64,8 +64,8 @@
                     android:paddingBottom="@dimen/_13sdp"
                     android:paddingLeft="@dimen/_5sdp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/colorGrey2" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -83,12 +83,12 @@
             <Button
                 android:id="@+id/signIn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:backgroundTint="@color/colorPrimary"
+                android:background="@color/colorPrimary"
                 android:text="Sign In"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:id="@+id/llProfile"
@@ -128,22 +128,26 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="16dp"
+                android:background="#3B5997"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <com.facebook.login.widget.LoginButton
-                    android:layout_marginTop="16dp"
                     android:id="@+id/btn_loginFacebook"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="4dp"
+                    android:layout_height="match_parent" />
 
                 <com.google.android.gms.common.SignInButton
-                    android:layout_marginTop="16dp"
                     android:id="@+id/btn_loginGoogle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
             <TextView
@@ -165,6 +169,7 @@
             android:background="@color/white" />
 
         <LinearLayout
+            android:background="@color/colorPrimaryDark"
             android:id="@+id/skipLoginLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -175,18 +180,19 @@
             <TextView
                 android:id="@+id/txtSkipLogin"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="50dp"
                 android:gravity="center"
-                android:text="SKIP LOGIN"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                android:text="Skip Login"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_8sdp"
                 android:src="@drawable/next_icon"
-                android:tint="@color/colorPrimary" />
+                android:tint="@color/white" />
         </LinearLayout>
 
     </RelativeLayout>

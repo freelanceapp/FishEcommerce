@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.teocfish.teoc.CategoryList">
+    tools:tContext="com.teocfish.teoc.CategoryList">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/categoryRecyclerView"
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Add modelProductList in your cart now." />
+            android:text="Add product in your cart now." />
 
         <Button
             android:id="@+id/continueShopping"

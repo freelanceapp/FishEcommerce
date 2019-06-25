@@ -3,9 +3,7 @@ package com.teocfish.teoc;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CategoryListResponse {
 
@@ -20,7 +18,7 @@ public class CategoryListResponse {
     private String categoryImage;
     @SerializedName("products")
     @Expose
-    private List<ModelProductList> products = null;
+    private List<Product> products = null;
 
     public String getCatId() {
         return catId;
@@ -46,11 +44,11 @@ public class CategoryListResponse {
         this.categoryImage = categoryImage;
     }
 
-    public List<ModelProductList> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<ModelProductList> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 }

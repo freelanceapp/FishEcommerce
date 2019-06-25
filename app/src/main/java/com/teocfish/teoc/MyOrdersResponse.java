@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class MyOrdersResponse {
     private String success;
+    private String message;
 
     private String userid;
     private String useremail;
@@ -61,6 +62,15 @@ public class MyOrdersResponse {
     public void setSuccess(String success) {
         this.success = success;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }

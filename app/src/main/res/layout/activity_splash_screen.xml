@@ -3,24 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_image"
-    tools:context="com.teocfish.teoc.SplashScreen">
+    android:background="@color/white"
+    tools:tContext="com.teocfish.teoc.SplashScreen">
 
     <ImageView
         android:id="@+id/teoc"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_250sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:src="@drawable/teoc1"/>
-    <!--<ImageView-->
-        <!--android:id="@+id/splashImage"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:src="@drawable/teoc1"/>-->
-
-
     <LinearLayout
         android:id="@+id/internetNotAvailable"
         android:layout_width="match_parent"

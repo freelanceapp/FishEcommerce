@@ -14,7 +14,20 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="RatingBarSmall"  parent="android:style/Widget.Material.RatingBar.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:rating">3</item>
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">1</item>
+        <item name="android:ratingBarStyle">@drawable/bg_golden</item>
+    <item name="colorControlNormal">@color/colorPrimary</item>
+    <item name="colorControlActivated">@color/colorPrimaryDark</item>
+    </style>
 
-    <style name="AppTheme.LoginActionbar" parent="AppTheme.NoActionBar"></style>
+    <style name="RatingBarBig" parent="Theme.AppCompat">
 
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+    </style>
 </resources>

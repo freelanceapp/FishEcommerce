@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.teocfish.teoc.DeliveryLocation">
+    tools:tContext="com.teocfish.teoc.DeliveryLocation">
 
     <include
         android:id="@+id/custom_filter"
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/below_title_text"
-        tools:context=".DeliveryLocation" />
+        tools:tContext=".DeliveryLocation" />
 
     <AutoCompleteTextView
         android:id="@+id/search_place"

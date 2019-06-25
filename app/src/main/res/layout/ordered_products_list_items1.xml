@@ -10,37 +10,78 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_white">
+        <android.support.v7.widget.CardView
+            android:layout_alignParentRight="true"
+            android:id="@+id/cvOrderedProdList"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="50dp">
 
         <ImageView
             android:id="@+id/productImage1"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
             android:src="@drawable/defaultimage" />
-
+        </android.support.v7.widget.CardView>
 
         <TextView
             android:id="@+id/productName1"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/productImage1"
-            android:layout_centerVertical="true"
-            android:layout_margin="@dimen/_10sdp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="Trump returns to white House from vacation at the end of a catastrophic week"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10ssp" />
+            android:layout_toLeftOf="@id/cvOrderedProdList"
+            android:text="@string/product_name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp" />
+        <TextView
+            android:background="@drawable/bg_green_rate"
+            android:layout_above="@+id/dotLine"
+            android:id="@+id/tvAvgRate"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.2"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+
+            />
+
+        <RatingBar
+            android:layout_toRightOf="@+id/tvAvgRate"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:layout_above="@+id/dotLine"
+                android:id="@+id/rb_productRateReview"
+                style="@style/RatingBarSmall"
+
+                />
+            <TextView
+                android:layout_toRightOf="@+id/rb_productRateReview"
+                android:layout_above="@+id/dotLine"
+                android:layout_marginLeft="@dimen/margin_top"
+                android:id="@+id/tvWriteReview"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rate_and_review"
+                android:textAllCaps="false"
+                android:textColor="@color/color_blue"
+                android:textSize="12sp"
+
+                />
+
 
         <View
             android:id="@+id/dotLine"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:layout_below="@+id/productImage1"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:background="@color/black"
-            android:textSize="@dimen/_10ssp" />
+            android:layout_height="1dp"
+            android:layout_below="@+id/cvOrderedProdList"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@color/black" />
 
 
     </RelativeLayout>

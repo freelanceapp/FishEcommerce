@@ -29,8 +29,8 @@ public class SplashScreen extends Activity {
 
     public static List<CategoryListResponse> categoryListResponseData;
     public static List<SliderListResponse> sliderListResponsesData;
-    public static List<ModelProductList> allProductsData;
-    public static List<ModelProductList> imagesList1;
+    public static List<Product> allProductsData;
+    public static List<Product> imagesList1;
     String id = "";
     @BindView(R.id.errorText)
     TextView errorText;
@@ -136,19 +136,19 @@ public class SplashScreen extends Activity {
 
     public void getAllProducts() {
         // getting news list data
-        Api.getClient().getAllProducts(new Callback<List<ModelProductList>>() {
+        Api.getClient().getAllProducts(new Callback<List<Product>>() {
             @Override
-            public void success(List<ModelProductList> allModelProductLists, Response response) {
+            public void success(List<Product> allProducts, Response response) {
                 try {
-                    allProductsData = allModelProductLists;
-//                    Log.d("allProductsData", allModelProductLists.get(0).getProductName());
+                    allProductsData = allProducts;
+//                    Log.d("allProductsData", allProducts.get(0).getProductName());
                     Gson gson = new Gson();
                     String json = gson.toJson(allProductsData);
                     editor.putString("newslist", json);
                     editor.commit();
                     moveNext();
                 } catch (Exception e) {
-                    errorText.setText("No ModelProductList Added In This Store!");
+                    errorText.setText("No Product Added In This Store!");
                     internetNotAvailable.setVisibility(View.VISIBLE);
                     splashImage.setVisibility(View.GONE);
                 }

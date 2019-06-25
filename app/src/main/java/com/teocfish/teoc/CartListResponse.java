@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CartistResponse {
+public class CartListResponse {
 
 
     private String success;
@@ -13,7 +13,7 @@ public class CartistResponse {
     private String useremail;
     private String tax;
     private String shipping;
-    private List<ModelProductList> modelProductLists = null;
+    private List<Product> products = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getCartid() {
@@ -63,12 +63,12 @@ public class CartistResponse {
         this.shipping = shipping;
     }
 
-    public List<ModelProductList> getModelProductLists() {
-        return modelProductLists;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setModelProductLists(List<ModelProductList> modelProductLists) {
-        this.modelProductLists = modelProductLists;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public Map<String, Object> getAdditionalProperties() {

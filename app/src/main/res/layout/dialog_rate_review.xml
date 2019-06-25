@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:background="@color/colorPrimaryDark"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.CardView
+        android:layout_margin="1dp"
+        app:cardCornerRadius="8dp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Rate and Review"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <RatingBar
+            android:layout_marginTop="@dimen/margin_top"
+            style="@style/RatingBarBig"
+            android:id="@+id/rb_rateReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_gravity="center_horizontal"
+            android:numStars="5"
+            android:stepSize="1"
+            android:rating="3.2" />
+
+
+            <TextView
+        android:layout_marginTop="@dimen/margin_top"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:text="Review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:background="@drawable/bg_et"
+        android:minLines="5"
+        android:gravity="start"
+        android:inputType="textCapCharacters"
+        android:padding="5dp"
+        android:hint="Remarks"
+        android:id="@+id/et_rateReview"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_rateReview"
+       android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_gravity="right"
+        android:background="@drawable/bg_btn_main"
+        android:text="Submit" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

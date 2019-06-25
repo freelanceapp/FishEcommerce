@@ -8,12 +8,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> -->
-    <!-- <permission android:name="android.permission.GET_ACCOUNTS" -->
-    <!-- android:protectionLevel="signature"/> -->
-    <uses-permission android:name="android.permission.READ_PROFILE" /> <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
-    <!-- <permission android:name="android.permission.READ_CONTACTS" -->
-    <!-- android:protectionLevel="signature"/> -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission
         android:name="android.permission.READ_PHONE_STATE"
         tools:node="remove" />
@@ -32,7 +28,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/teoc_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/teoc_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
@@ -66,18 +62,15 @@
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_K6veGqYGkoWgi1" />
 
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND"
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
-
-        <activity android:name=".AccountVerification" /> <!-- Facebook Login Start -->
+        <activity android:name=".AccountVerification" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -97,10 +90,8 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
-        </activity> <!-- Facebook Login End -->
-        <!-- <meta-data -->
-        <!-- android:name="com.facebook.sdk.ApplicationId" -->
-        <!-- android:value="@string/facebook_app_id" /> -->
+        </activity>
+
         <meta-data
             android:name="SHA-1 certificate"
             android:value="@string/SHA1_fingerprint" />
@@ -117,10 +108,7 @@
             android:value="@string/facebook_app_id" />
         <meta-data
             android:name="net.hockeyapp.android.appIdentifier"
-            android:value="f3a50de6e57345ebbfa81be3577f6a0e" /> <!-- <activity -->
-        <!-- android:name="com.facebook.FacebookActivity" -->
-        <!-- android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" -->
-        <!-- android:label="@string/app_name" /> -->
+            android:value="f3a50de6e57345ebbfa81be3577f6a0e" />
         <activity android:name=".OrderCanceled" />
     </application>
 

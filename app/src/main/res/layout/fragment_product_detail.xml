@@ -162,12 +162,48 @@
                     android:textColor="@color/light_red"
                     android:textSize="@dimen/_11ssp"
                     android:textStyle="bold|italic" />
+
+                <RatingBar
+                    android:visibility="gone"
+                    android:id="@+id/ratingProducts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    android:isIndicator="true" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/total_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5.0"
+                    android:textStyle="bold"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/bg_green_rate"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"/>
+                    <RatingBar
+                        android:id="@+id/rb_rateProdDetail"
+                        android:layout_marginLeft="@dimen/margin_top"
+                        style="@style/RatingBarSmall" />
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_marginLeft="@dimen/margin_top"
+                    android:id="@+id/total_ratings_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="150 ratings "
+                    />
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -190,438 +226,437 @@
                     android:textSize="@dimen/_15ssp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/_5sdp">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_marginBottom="@dimen/_5sdp">-->
 
-                <RelativeLayout
-                    android:id="@+id/rating_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white">
-                <TextView
-                    android:id="@+id/rating"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_25sdp"
-                    android:textAlignment="center"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:text="Ratings"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="#000"/>
-                </RelativeLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_100sdp"
-                    android:weightSum="3"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:background="@android:color/white">
+                <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/rating_header"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@color/white">&ndash;&gt;-->
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/rating"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="@dimen/_25sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textAlignment="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="Ratings"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="#000"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="@dimen/_100sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:weightSum="3"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="horizontal"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="@dimen/_3sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@android:color/white">&ndash;&gt;-->
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5">
+                    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1.5">&ndash;&gt;-->
 
-                        <TextView
-                            android:id="@+id/total_rating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_20sdp"
-                            android:text="5"
-                            android:textColor="@color/LOGO"
-                            android:layout_marginLeft="@dimen/_70sdp"
-                            android:drawableRight="@drawable/rating"
-                            android:drawablePadding="@dimen/_5sdp"
-                            android:paddingLeft="@dimen/_2sdp"
-                            android:textSize="@dimen/_20ssp"
-                            android:layout_centerHorizontal="true"/>
+                        <!--&lt;!&ndash;&lt;!&ndash;<TextView&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:id="@+id/total_rating"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_marginTop="@dimen/_20sdp"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:text="5"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:textColor="@color/LOGO"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_marginLeft="@dimen/_70sdp"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:drawableRight="@drawable/rating"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:drawablePadding="@dimen/_5sdp"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:paddingLeft="@dimen/_2sdp"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:textSize="@dimen/_20ssp"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_centerHorizontal="true"/>&ndash;&gt;&ndash;&gt;-->
 
-                        <TextView
-                            android:id="@+id/total_ratings_txt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/total_rating"
-                            android:text="150 ratings "
-                            android:textAlignment="center"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"/>
+                        <!--&lt;!&ndash;&lt;!&ndash;<TextView&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:id="@+id/total_ratings_txt"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_below="@id/total_rating"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:text="150 ratings "&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:textAlignment="center"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_centerHorizontal="true"&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;android:layout_centerVertical="true"/>&ndash;&gt;&ndash;&gt;-->
 
-                    </RelativeLayout>
+                    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.02"
-                        android:layout_gravity="center"
-                        android:background="@color/gray"/>
+                    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="0.02"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/gray"/>&ndash;&gt;-->
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5">
+                    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1.5">&ndash;&gt;-->
 
-                      <RelativeLayout
-                          android:id="@+id/rating5_layout"
-                          android:layout_width="match_parent"
-                          android:layout_height="@dimen/_20sdp">
+                      <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                          <!--&lt;!&ndash;android:id="@+id/rating5_layout"&ndash;&gt;-->
+                          <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                          <!--&lt;!&ndash;android:layout_height="@dimen/_20sdp">&ndash;&gt;-->
 
-                          <TextView
-                              android:id="@+id/rating5"
-                              android:layout_width="@dimen/_30sdp"
-                              android:layout_height="wrap_content"
-                              android:text="5"
-                              android:drawableRight="@drawable/rating"
-                              android:textSize="@dimen/_13ssp"
-                              android:layout_centerVertical="true"
-                              android:layout_marginLeft="@dimen/_5sdp"/>
+                          <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:id="@+id/rating5"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:text="5"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:drawableRight="@drawable/rating"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:textSize="@dimen/_13ssp"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"/>&ndash;&gt;-->
 
-                          <View
-                              android:id="@+id/rating_view5"
-                              android:layout_width="@dimen/_100sdp"
-                              android:layout_height="@dimen/_5sdp"
-                              android:layout_toRightOf="@id/rating5"
-                              android:layout_marginLeft="@dimen/_10sdp"
-                              android:background="@color/GREEN"
-                              android:layout_centerVertical="true"/>
+                          <!--&lt;!&ndash;<View&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:id="@+id/rating_view5"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_width="@dimen/_100sdp"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_height="@dimen/_5sdp"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_toRightOf="@id/rating5"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_10sdp"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:background="@color/GREEN"&ndash;&gt;-->
+                              <!--&lt;!&ndash;android:layout_centerVertical="true"/>&ndash;&gt;-->
 
-                      </RelativeLayout>
+                      <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
-                        <RelativeLayout
-                            android:id="@+id/rating4_layout"
-                            android:layout_below="@+id/rating5_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_20sdp">
+                        <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/rating4_layout"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_below="@+id/rating5_layout"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="@dimen/_20sdp">&ndash;&gt;-->
 
-                            <TextView
-                                android:id="@+id/rating4"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="wrap_content"
-                                android:text="4"
-                                android:drawableRight="@drawable/rating"
-                                android:textSize="@dimen/_13ssp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_5sdp"/>
+                            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:id="@+id/rating4"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:text="4"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:drawableRight="@drawable/rating"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textSize="@dimen/_13ssp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"/>&ndash;&gt;-->
 
-                            <View
-                                android:id="@+id/rating_view4"
-                                android:layout_width="@dimen/_85sdp"
-                                android:layout_height="@dimen/_5sdp"
-                                android:layout_toRightOf="@id/rating4"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:background="@color/GREEN"
-                                android:layout_centerVertical="true"/>
+                            <!--&lt;!&ndash;<View&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:id="@+id/rating_view4"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="@dimen/_85sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="@dimen/_5sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_toRightOf="@id/rating4"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_10sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:background="@color/GREEN"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_centerVertical="true"/>&ndash;&gt;-->
 
-                        </RelativeLayout>
+                        <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
-                        <RelativeLayout
-                            android:id="@+id/rating3_layout"
-                            android:layout_below="@+id/rating4_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_20sdp">
+                        <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/rating3_layout"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_below="@+id/rating4_layout"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="@dimen/_20sdp">&ndash;&gt;-->
 
-                            <TextView
-                                android:id="@+id/rating3"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="wrap_content"
-                                android:text="3"
-                                android:drawableRight="@drawable/rating"
-                                android:textSize="@dimen/_13ssp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_5sdp"/>
+                            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:id="@+id/rating3"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:text="3"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:drawableRight="@drawable/rating"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textSize="@dimen/_13ssp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"/>&ndash;&gt;-->
 
-                            <View
-                                android:id="@+id/rating_view3"
-                                android:layout_width="@dimen/_70sdp"
-                                android:layout_height="@dimen/_5sdp"
-                                android:layout_toRightOf="@id/rating3"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:background="@color/GREEN"
-                                android:layout_centerVertical="true"/>
+                            <!--&lt;!&ndash;<View&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:id="@+id/rating_view3"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="@dimen/_70sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="@dimen/_5sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_toRightOf="@id/rating3"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_10sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:background="@color/GREEN"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_centerVertical="true"/>&ndash;&gt;-->
 
-                        </RelativeLayout>
+                        <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
-                        <RelativeLayout
-                            android:id="@+id/rating2_layout"
-                            android:layout_below="@+id/rating3_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_20sdp">
+                        <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/rating2_layout"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_below="@+id/rating3_layout"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="@dimen/_20sdp">&ndash;&gt;-->
 
-                            <TextView
-                                android:id="@+id/rating2"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="wrap_content"
-                                android:text="2"
-                                android:drawableRight="@drawable/rating"
-                                android:textSize="@dimen/_13ssp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_5sdp"/>
+                            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:id="@+id/rating2"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:text="2"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:drawableRight="@drawable/rating"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textSize="@dimen/_13ssp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"/>&ndash;&gt;-->
 
-                            <View
-                                android:id="@+id/rating_view2"
-                                android:layout_width="@dimen/_55sdp"
-                                android:layout_height="@dimen/_5sdp"
-                                android:layout_toRightOf="@id/rating2"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:background="@color/yellow"
-                                android:layout_centerVertical="true"/>
+                            <!--&lt;!&ndash;<View&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:id="@+id/rating_view2"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="@dimen/_55sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="@dimen/_5sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_toRightOf="@id/rating2"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_10sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:background="@color/yellow"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_centerVertical="true"/>&ndash;&gt;-->
 
-                        </RelativeLayout>
+                        <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
-                        <RelativeLayout
-                            android:id="@+id/rating1_layout"
-                            android:layout_below="@+id/rating2_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_20sdp">
+                        <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/rating1_layout"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_below="@+id/rating2_layout"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="@dimen/_20sdp">&ndash;&gt;-->
 
-                            <TextView
-                                android:id="@+id/rating1"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="wrap_content"
-                                android:text="1"
-                                android:drawableRight="@drawable/rating"
-                                android:textSize="@dimen/_13ssp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_5sdp"/>
+                            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:id="@+id/rating1"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:text="1"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:drawableRight="@drawable/rating"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:textSize="@dimen/_13ssp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"/>&ndash;&gt;-->
 
-                            <View
-                                android:id="@+id/rating_view1"
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_5sdp"
-                                android:layout_toRightOf="@id/rating1"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:background="@color/color_darkRed"
-                                android:layout_centerVertical="true"/>
+                            <!--&lt;!&ndash;<View&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:id="@+id/rating_view1"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_width="@dimen/_40sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_height="@dimen/_5sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_toRightOf="@id/rating1"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_10sdp"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:background="@color/color_darkRed"&ndash;&gt;-->
+                                <!--&lt;!&ndash;android:layout_centerVertical="true"/>&ndash;&gt;-->
 
-                        </RelativeLayout>
-                    </RelativeLayout>
+                        <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
-                </LinearLayout>
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="rate and write a review"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@android:color/white"/>
-
-
-
-                <!--<RelativeLayout-->
-                    <!--android:id="@+id/review_layout1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="@dimen/_2sdp"-->
-                    <!--android:background="@android:color/white"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review1"-->
-                        <!--android:layout_width="@dimen/_30sdp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/LOGO"-->
-                        <!--android:drawableRight="@drawable/star_white"-->
-                        <!--android:text="5"-->
-                        <!--android:textAlignment="center"-->
-                        <!--android:textColor="@color/white"-->
-                        <!--android:layout_margin="@dimen/_5sdp"/>-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review1textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Excellent"-->
-                        <!--android:textSize="@dimen/_15ssp"-->
-                        <!--android:textStyle="bold"-->
-                        <!--android:textColor="@color/LOGO"-->
-                       <!--android:layout_marginLeft="@dimen/_5sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"-->
-                        <!--android:layout_toRightOf="@+id/review1"-->
-                        <!--/>-->
-                    <!--<TextView-->
-                        <!--android:id="@+id/product_review1"-->
-                        <!--android:layout_below="@+id/review1textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Nice !"-->
-                        <!--android:paddingLeft="@dimen/_45sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"/>-->
-
-                <!--</RelativeLayout>-->
-
-                <!--<RelativeLayout-->
-                    <!--android:id="@+id/review_layout2"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="@dimen/_2sdp"-->
-                    <!--android:background="@android:color/white"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review2"-->
-                        <!--android:layout_width="@dimen/_30sdp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/LOGO"-->
-                        <!--android:drawableRight="@drawable/star_white"-->
-                        <!--android:text="4"-->
-                        <!--android:textAlignment="center"-->
-                        <!--android:textColor="@color/white"-->
-                        <!--android:layout_margin="@dimen/_5sdp"/>-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review2textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Very Good"-->
-                        <!--android:textSize="@dimen/_15ssp"-->
-                        <!--android:textStyle="bold"-->
-                        <!--android:textColor="@color/LOGO"-->
-                        <!--android:layout_marginLeft="@dimen/_5sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"-->
-                        <!--android:layout_toRightOf="@+id/review2"-->
-                        <!--/>-->
-                    <!--<TextView-->
-                        <!--android:id="@+id/product_review2"-->
-                        <!--android:layout_below="@+id/review2textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="good !"-->
-                        <!--android:paddingLeft="@dimen/_45sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"/>-->
-
-                <!--</RelativeLayout>-->
-
-                <!--<RelativeLayout-->
-                    <!--android:id="@+id/review_layout3"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="@dimen/_2sdp"-->
-                    <!--android:background="@android:color/white"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review3"-->
-                        <!--android:layout_width="@dimen/_30sdp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/LOGO"-->
-                        <!--android:drawableRight="@drawable/star_white"-->
-                        <!--android:text="4"-->
-                        <!--android:textAlignment="center"-->
-                        <!--android:textColor="@color/white"-->
-                        <!--android:layout_margin="@dimen/_5sdp"/>-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review3textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Super !"-->
-                        <!--android:textSize="@dimen/_15ssp"-->
-                        <!--android:textStyle="bold"-->
-                        <!--android:textColor="@color/LOGO"-->
-                        <!--android:layout_marginLeft="@dimen/_5sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"-->
-                        <!--android:layout_toRightOf="@+id/review3"-->
-                        <!--/>-->
-                    <!--<TextView-->
-                        <!--android:id="@+id/product_review3"-->
-                        <!--android:layout_below="@+id/review3textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="good !"-->
-                        <!--android:paddingLeft="@dimen/_45sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"/>-->
-
-                <!--</RelativeLayout>-->
-
-                <!--<RelativeLayout-->
-                    <!--android:id="@+id/review_layout4"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="@dimen/_2sdp"-->
-                    <!--android:background="@android:color/white"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review4"-->
-                        <!--android:layout_width="@dimen/_30sdp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/LOGO"-->
-                        <!--android:drawableRight="@drawable/star_white"-->
-                        <!--android:text="4"-->
-                        <!--android:textAlignment="center"-->
-                        <!--android:textColor="@color/white"-->
-                        <!--android:layout_margin="@dimen/_5sdp"/>-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review4textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Very Nice."-->
-                        <!--android:textSize="@dimen/_15ssp"-->
-                        <!--android:textStyle="bold"-->
-                        <!--android:textColor="@color/LOGO"-->
-                        <!--android:layout_marginLeft="@dimen/_5sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"-->
-                        <!--android:layout_toRightOf="@+id/review4"-->
-                        <!--/>-->
-                    <!--<TextView-->
-                        <!--android:id="@+id/product_review4"-->
-                        <!--android:layout_below="@+id/review4textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="good !"-->
-                        <!--android:paddingLeft="@dimen/_45sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"/>-->
-
-                <!--</RelativeLayout>-->
-
-                <!--<RelativeLayout-->
-                    <!--android:id="@+id/review_layout5"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="@dimen/_2sdp"-->
-                    <!--android:background="@android:color/white"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review5"-->
-                        <!--android:layout_width="@dimen/_30sdp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@color/LOGO"-->
-                        <!--android:drawableRight="@drawable/star_white"-->
-                        <!--android:text="4"-->
-                        <!--android:textAlignment="center"-->
-                        <!--android:textColor="@color/white"-->
-                        <!--android:layout_margin="@dimen/_5sdp"/>-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/review5textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Good"-->
-                        <!--android:textSize="@dimen/_15ssp"-->
-                        <!--android:textStyle="bold"-->
-                        <!--android:textColor="@color/LOGO"-->
-                        <!--android:layout_marginLeft="@dimen/_5sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"-->
-                        <!--android:layout_toRightOf="@+id/review5"-->
-                        <!--/>-->
-                    <!--<TextView-->
-                        <!--android:id="@+id/product_review5"-->
-                        <!--android:layout_below="@+id/review5textView"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="good !"-->
-                        <!--android:paddingLeft="@dimen/_45sdp"-->
-                        <!--android:layout_marginTop="@dimen/_2sdp"/>-->
-
-                <!--</RelativeLayout>-->
+                <!--&lt;!&ndash;<Button&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="rate and write a review"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@android:color/white"/>&ndash;&gt;-->
 
 
 
-            </LinearLayout>
+                <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/review_layout1"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@android:color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:drawableRight="@drawable/star_white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="5"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAlignment="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="@dimen/_5sdp"/>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review1textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="Excellent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textSize="@dimen/_15ssp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/LOGO"&ndash;&gt;-->
+                       <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_toRightOf="@+id/review1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/product_review1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_below="@+id/review1textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="Nice !"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:paddingLeft="@dimen/_45sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"/>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/review_layout2"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@android:color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review2"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:drawableRight="@drawable/star_white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="4"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAlignment="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="@dimen/_5sdp"/>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review2textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="Very Good"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textSize="@dimen/_15ssp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_toRightOf="@+id/review2"&ndash;&gt;-->
+                        <!--&lt;!&ndash;/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/product_review2"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_below="@+id/review2textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="good !"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:paddingLeft="@dimen/_45sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"/>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/review_layout3"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@android:color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review3"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:drawableRight="@drawable/star_white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="4"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAlignment="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="@dimen/_5sdp"/>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review3textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="Super !"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textSize="@dimen/_15ssp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_toRightOf="@+id/review3"&ndash;&gt;-->
+                        <!--&lt;!&ndash;/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/product_review3"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_below="@+id/review3textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="good !"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:paddingLeft="@dimen/_45sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"/>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/review_layout4"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@android:color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review4"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:drawableRight="@drawable/star_white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="4"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAlignment="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="@dimen/_5sdp"/>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review4textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="Very Nice."&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textSize="@dimen/_15ssp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_toRightOf="@+id/review4"&ndash;&gt;-->
+                        <!--&lt;!&ndash;/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/product_review4"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_below="@+id/review4textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="good !"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:paddingLeft="@dimen/_45sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"/>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/review_layout5"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@android:color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review5"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="@dimen/_30sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:drawableRight="@drawable/star_white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="4"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textAlignment="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="@dimen/_5sdp"/>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/review5textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="Good"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textSize="@dimen/_15ssp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/LOGO"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="@dimen/_5sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_toRightOf="@+id/review5"&ndash;&gt;-->
+                        <!--&lt;!&ndash;/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/product_review5"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_below="@+id/review5textView"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="good !"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:paddingLeft="@dimen/_45sdp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="@dimen/_2sdp"/>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+
+
+            <!--</LinearLayout>-->
 
 
 
@@ -631,13 +666,13 @@
     <android.support.v7.widget.CardView
         android:id="@+id/bottomCardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="2">
 

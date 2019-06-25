@@ -5,20 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ModelProductList {
-//"productId": "2202",
-//                "productName": "Mud Crab",
-//                "currency": "INR          ",
-//                "sellprice": "750",
-//                "mrp": "770",
-//                "size": "",
-//                "quantity": "25",
-//                "status": "Instock",
-//                "description": "\t\t\t\t\t\t\t\t\t<p>From the exotics of chilika</p>\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
-//                "color": "",
-//                "images": [
-//                    "https://teocfish.com/adminpanel/uploads/products/1528792531-mud-crab.png"
-//                ]
+public class Product {
     private String success;
     private String productId;
     private String iteam_id;
@@ -29,6 +16,9 @@ public class ModelProductList {
     private String sellprice;
     private String size;
     private String status;
+    private String rate_count;
+    private String avg_rating;
+    private String review_status;
     private String color;
     private String currency;
     private String quantity;
@@ -36,8 +26,6 @@ public class ModelProductList {
     private String description;
     private List<String> images = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-
 
     public String getOrderstatus() {
         return orderstatus;
@@ -132,6 +120,30 @@ public class ModelProductList {
 
     {
         this.status = status;
+    }
+
+    public String getRate_count() {
+        return rate_count;
+    }
+
+    public void setRate_count(String rate_count) {
+        this.rate_count = rate_count;
+    }
+
+    public String getAvg_rating() {
+        return avg_rating;
+    }
+
+    public void setAvg_rating(String avg_rating) {
+        this.avg_rating = avg_rating;
+    }
+
+    public String getReview_status() {
+        return review_status;
+    }
+
+    public void setReview_status(String review_status) {
+        this.review_status = review_status;
     }
 
     public String getQuantity() {

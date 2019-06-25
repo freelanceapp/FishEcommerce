@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1055600765575-43nsrvdfv92kdv3ugo29an6ji0kspkc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teocfish.teoc",
+            "certificate_hash": "20a1e6b6a3c3448af367cceaf1e52033760ea6c6"
+          }
+        },
+        {
           "client_id": "1055600765575-9om2i30o3dritoju728s8lo7k9hggr2i.apps.googleusercontent.com",
           "client_type": 3
         }

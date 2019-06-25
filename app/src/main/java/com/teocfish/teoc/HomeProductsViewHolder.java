@@ -17,7 +17,7 @@ public class HomeProductsViewHolder extends RecyclerView.ViewHolder {
     TextView productName, price, actualPrice, productName1, price1, actualPrice1, discountPercentage, discountPercentage1;
     CardView cardView, cardView1;
 
-    public HomeProductsViewHolder(final Context context, View itemView, List<ModelProductList> modelProductListList) {
+    public HomeProductsViewHolder(final Context context, View itemView, List<Product> productList) {
         super(itemView);
         image = (ImageView) itemView.findViewById(R.id.productImage);
         image1 = (ImageView) itemView.findViewById(R.id.productImage1);

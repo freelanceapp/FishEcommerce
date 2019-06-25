@@ -14,17 +14,17 @@ import java.util.List;
 
 public class SearchProductListAdapter extends RecyclerView.Adapter<HomeProductsViewHolder> {
     Context context;
-    List<ModelProductList> modelProductListList;
+    List<Product> productList;
 
-    public SearchProductListAdapter(Context context, List<ModelProductList> modelProductListList) {
+    public SearchProductListAdapter(Context context, List<Product> productList) {
         this.context = context;
-        this.modelProductListList = modelProductListList;
+        this.productList = productList;
     }
 
     @Override
     public HomeProductsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.home_products_list_items, null);
-        HomeProductsViewHolder homeProductsViewHolder = new HomeProductsViewHolder(context, view, modelProductListList);
+        HomeProductsViewHolder homeProductsViewHolder = new HomeProductsViewHolder(context, view, productList);
         return homeProductsViewHolder;
     }
 
@@ -34,11 +34,11 @@ public class SearchProductListAdapter extends RecyclerView.Adapter<HomeProductsV
 
         holder.cardView.setVisibility(View.GONE);
         holder.cardView1.setVisibility(View.VISIBLE);
-        holder.productName1.setText(modelProductListList.get(position).getProductName());
-        holder.price1.setText(MainActivity.currency + " " + modelProductListList.get(position).getSellprice());
+        holder.productName1.setText(productList.get(position).getProductName());
+        holder.price1.setText(MainActivity.currency + " " + productList.get(position).getSellprice());
         try {
             Picasso.with(context)
-                    .load(modelProductListList.get(position).getImages().get(0))
+                    .load(productList.get(position).getImages().get(0))
                     .placeholder(R.drawable.defaultimage)
                     .resize(Integer.parseInt(context.getResources().getString(R.string.targetProductImageWidth1)),Integer.parseInt(context.getResources().getString(R.string.targetProductImageHeight)))
                     .into(holder.image1);
@@ -46,21 +46,21 @@ public class SearchProductListAdapter extends RecyclerView.Adapter<HomeProductsV
         }
         try {
 
-            double discountPercentage = Integer.parseInt(modelProductListList.get(position).getMrpprice()) - Integer.parseInt(modelProductListList.get(position).getSellprice());
+            double discountPercentage = Integer.parseInt(productList.get(position).getMrpprice()) - Integer.parseInt(productList.get(position).getSellprice());
 //            Log.d("percentage", discountPercentage + "");
-            discountPercentage = (discountPercentage / Integer.parseInt(modelProductListList.get(position).getMrpprice())) * 100;
+            discountPercentage = (discountPercentage / Integer.parseInt(productList.get(position).getMrpprice())) * 100;
             if ((int) Math.round(discountPercentage) > 0) {
                 holder.discountPercentage1.setText(((int) Math.round(discountPercentage) + "% Off"));
             }
-            holder.actualPrice1.setText(MainActivity.currency + " " + modelProductListList.get(position).getMrpprice());
+            holder.actualPrice1.setText(MainActivity.currency + " " + productList.get(position).getMrpprice());
             holder.actualPrice1.setPaintFlags(holder.actualPrice1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         }catch (Exception e){}
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProductDetail.modelProductListList.clear();
-                ProductDetail.modelProductListList.addAll(modelProductListList);
+                ProductDetail.productList.clear();
+                ProductDetail.productList.addAll(productList);
                 ProductDetail productDetail = new ProductDetail();
                 Bundle bundle = new Bundle();
                 bundle.putInt("position", position);
@@ -74,7 +74,7 @@ public class SearchProductListAdapter extends RecyclerView.Adapter<HomeProductsV
 
     @Override
     public int getItemCount() {
-        return modelProductListList.size();
+        return productList.size();
     }
 
 }

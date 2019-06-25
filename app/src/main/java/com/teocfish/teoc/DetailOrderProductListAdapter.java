@@ -14,24 +14,24 @@ import java.util.List;
 
 public class DetailOrderProductListAdapter extends RecyclerView.Adapter<DetailOrderedProductsListViewHolder> {
     Context context;
-    List<ModelProductList> modelProductListList;
+    List<Product> productList;
 
-    public DetailOrderProductListAdapter(Context context, List<ModelProductList> modelProductListList) {
+    public DetailOrderProductListAdapter(Context context, List<Product> productList) {
         this.context = context;
-        this.modelProductListList = modelProductListList;
+        this.productList = productList;
     }
 
     @Override
     public DetailOrderedProductsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.detail_ordered_products_list_items1, null);
-        DetailOrderedProductsListViewHolder DetailOrderedProductsListViewHolder = new DetailOrderedProductsListViewHolder(context, view, modelProductListList);
+        DetailOrderedProductsListViewHolder DetailOrderedProductsListViewHolder = new DetailOrderedProductsListViewHolder(context, view, productList);
         return DetailOrderedProductsListViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final DetailOrderedProductsListViewHolder holder, final int position) {
 
-        holder.productName1.setText(modelProductListList.get(position).getProductName());
+        holder.productName1.setText(productList.get(position).getProductName());
 
 //        if (!tModels.get(position).getSize().equalsIgnoreCase("")) {
 //            Log.d("size", tModels.get(position).getSize());
@@ -48,11 +48,11 @@ public class DetailOrderProductListAdapter extends RecyclerView.Adapter<DetailOr
 //            holder.color.setVisibility(View.INVISIBLE);
 //        }
 
-        holder.qty.setText("Qty: " + modelProductListList.get(position).getQuantity());
-        holder.price.setText("Price: " + MyOrderedProductsDetailPage.currency + " " + modelProductListList.get(position).getSellprice());
+        holder.qty.setText("Qty: " + productList.get(position).getQuantity());
+        holder.price.setText("Price: " + MyOrderedProductsDetailPage.currency + " " + productList.get(position).getSellprice());
         try {
             Picasso.with(context)
-                    .load(modelProductListList.get(position).getImages().get(0))
+                    .load(productList.get(position).getImages().get(0))
                     .resize(Integer.parseInt(context.getResources().getString(R.string.targetProductImageWidth1)),Integer.parseInt(context.getResources().getString(R.string.targetProductImageHeight)))
                     .placeholder(R.drawable.defaultimage)
                     .into(holder.image1);
@@ -63,7 +63,7 @@ public class DetailOrderProductListAdapter extends RecyclerView.Adapter<DetailOr
 
     @Override
     public int getItemCount() {
-        return modelProductListList.size();
+        return productList.size();
     }
 
 }

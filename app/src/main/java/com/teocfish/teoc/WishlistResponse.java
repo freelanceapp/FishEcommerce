@@ -23,14 +23,14 @@ public class WishlistResponse {
         this.message = message;
     }
 
-    public List<ModelProductList> getProducts() {
-        return modelProductList;
+    public List<Product> getProducts() {
+        return product;
     }
 
-    public void setProducts(List<ModelProductList> modelProductLists) {
-        this.modelProductList = modelProductLists;
+    public void setProducts(List<Product> products) {
+        this.product = products;
     }
 
-    private List<ModelProductList> modelProductList = null;
+    private List<Product> product = null;
 
 }

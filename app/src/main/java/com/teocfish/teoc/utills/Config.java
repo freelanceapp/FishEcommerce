@@ -12,8 +12,10 @@ import android.widget.EditText;
 
 import com.teocfish.teoc.Api;
 import com.teocfish.teoc.CartListAdapter;
-import com.teocfish.teoc.CartistResponse;
+import com.teocfish.teoc.CartListResponse;
 import com.teocfish.teoc.ChoosePaymentMethod;
+import com.teocfish.teoc.Product;
+import com.teocfish.teoc.ProductDetail;
 import com.teocfish.teoc.activity.LoginActivity;
 import com.teocfish.teoc.MainActivity;
 import com.teocfish.teoc.MyCartList;
@@ -98,15 +100,15 @@ public class Config {
         if (b)
             MainActivity.progressBar.setVisibility(View.VISIBLE);
         MainActivity.cartCount.setVisibility(View.GONE);
-        Api.getClient().getCartList(MainActivity.userId, new Callback<CartistResponse>() {
+        Api.getClient().getCartList(MainActivity.userId, new Callback<CartListResponse>() {
             @Override
-            public void success(CartistResponse cartistResponse, Response response) {
+            public void success(CartListResponse cartListResponse, Response response) {
                 MainActivity.progressBar.setVisibility(View.GONE);
                 try {
-                    if (cartistResponse.getModelProductLists().size() <= 0) {
+                    if (cartListResponse.getProducts().size() <= 0) {
                         MainActivity.cartCount.setVisibility(View.GONE);
                     } else {
-                        MainActivity.cartCount.setText(cartistResponse.getModelProductLists().size() + "");
+                        MainActivity.cartCount.setText(cartListResponse.getProducts().size() + "");
                         if (!b) {
 //                            Log.d("equals", "equals");
                             MainActivity.cartCount.setVisibility(View.GONE);
@@ -137,7 +139,7 @@ public class Config {
         progressDialog.show();
 
         Api.getClient().addOrder(MainActivity.userId,
-                MyCartList.cartistResponseData.getCartid(),
+                MyCartList.cartListResponseData.getCartid(),
                 ChoosePaymentMethod.address,
                 ChoosePaymentMethod.mobileNo,
                 transactionId,
@@ -151,6 +153,29 @@ public class Config {
                         Intent intent = new Intent(context, OrderConfirmed.class);
                         context.startActivity(intent);
                         ((Activity) context).finishAffinity();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        progressDialog.dismiss();
+                        ((Activity) context).finish();
+                    }
+                });
+    }
+    public static void rateReview(final Context context, String strRate, String strReview, String strProdId) {
+        final ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Please Wait");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        Api.getClient().rateReview(MainActivity.userId,
+                strProdId,
+                strRate,
+                strReview,
+                new Callback<SignUpResponse>() {
+                    @Override
+                    public void success(SignUpResponse signUpResponse, Response response) {
+                        progressDialog.dismiss();
                     }
 
                     @Override

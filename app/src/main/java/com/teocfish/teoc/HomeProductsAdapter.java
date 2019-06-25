@@ -15,21 +15,21 @@ import java.util.List;
 
 public class HomeProductsAdapter extends RecyclerView.Adapter<HomeProductsViewHolder> {
     Context context;
-    List<ModelProductList> modelProductListList;
+    List<Product> productList;
     ;
     int i, parentPosition;
 
-    public HomeProductsAdapter(Context context, List<ModelProductList> modelProductListList, int i, int position) {
+    public HomeProductsAdapter(Context context, List<Product> productList, int i, int position) {
         this.context = context;
         this.i = i;
         this.parentPosition = position;
-        this.modelProductListList = modelProductListList;
+        this.productList = productList;
     }
 
     @Override
     public HomeProductsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.home_products_list_items, null);
-        HomeProductsViewHolder homeProductsViewHolder = new HomeProductsViewHolder(context, view, modelProductListList);
+        HomeProductsViewHolder homeProductsViewHolder = new HomeProductsViewHolder(context, view, productList);
         return homeProductsViewHolder;
     }
 
@@ -43,23 +43,23 @@ public class HomeProductsAdapter extends RecyclerView.Adapter<HomeProductsViewHo
             holder.cardView.setVisibility(View.GONE);
             holder.cardView1.setVisibility(View.VISIBLE);
         }
-        holder.productName.setText(modelProductListList.get(position).getProductName());
-        holder.price.setText(MainActivity.currency + " " + modelProductListList.get(position).getSellprice());
+        holder.productName.setText(productList.get(position).getProductName());
+        holder.price.setText(MainActivity.currency + " " + productList.get(position).getSellprice());
 
         try {
             Picasso.with(context)
-                    .load(modelProductListList.get(position).getImages().get(0))
+                    .load(productList.get(position).getImages().get(0))
                     .placeholder(R.drawable.defaultimage)
                     .resize(Integer.parseInt(context.getResources().getString(R.string.targetProductImageWidth)),Integer.parseInt(context.getResources().getString(R.string.targetProductImageHeight)))
                     .into(holder.image);
         } catch (Exception e) {
 //            Log.d("exception", e.toString());
         }
-        holder.productName1.setText(modelProductListList.get(position).getProductName());
-        holder.price1.setText(MainActivity.currency + " " + modelProductListList.get(position).getSellprice());
+        holder.productName1.setText(productList.get(position).getProductName());
+        holder.price1.setText(MainActivity.currency + " " + productList.get(position).getSellprice());
         try {
             Picasso.with(context)
-                    .load(modelProductListList.get(position).getImages().get(0))
+                    .load(productList.get(position).getImages().get(0))
                     .resize(Integer.parseInt(context.getResources().getString(R.string.targetProductImageWidth1)),Integer.parseInt(context.getResources().getString(R.string.targetProductImageHeight)))
                     .placeholder(R.drawable.defaultimage)
                     .into(holder.image1);
@@ -67,18 +67,18 @@ public class HomeProductsAdapter extends RecyclerView.Adapter<HomeProductsViewHo
 //            Log.d("exception", e.toString());
         }
         try {
-            double discountPercentage = Integer.parseInt(modelProductListList.get(position).getMrpprice()) - Integer.parseInt(modelProductListList.get(position).getSellprice());
+            double discountPercentage = Integer.parseInt(productList.get(position).getMrpprice()) - Integer.parseInt(productList.get(position).getSellprice());
 //            Log.d("percentage", discountPercentage + "");
-            discountPercentage = (discountPercentage / Integer.parseInt(modelProductListList.get(position).getMrpprice())) * 100;
+            discountPercentage = (discountPercentage / Integer.parseInt(productList.get(position).getMrpprice())) * 100;
             if ((int) Math.round(discountPercentage) > 0) {
                 holder.discountPercentage.setText(((int) Math.round(discountPercentage) + "% Off"));
                 holder.discountPercentage1.setText(((int) Math.round(discountPercentage) + "% Off"));
             }
 //            Log.d("mrptextsize", tModels.get(position).getMrpprice().length() + "");
-            holder.actualPrice.setText(MainActivity.currency + " " + modelProductListList.get(position).getMrpprice());
+            holder.actualPrice.setText(MainActivity.currency + " " + productList.get(position).getMrpprice());
             holder.actualPrice.setPaintFlags(holder.actualPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.actualPrice1.setPaintFlags(holder.actualPrice1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            holder.actualPrice1.setText(MainActivity.currency + " " + modelProductListList.get(position).getMrpprice());
+            holder.actualPrice1.setText(MainActivity.currency + " " + productList.get(position).getMrpprice());
         } catch (Exception e) {
 
         }
@@ -86,8 +86,8 @@ public class HomeProductsAdapter extends RecyclerView.Adapter<HomeProductsViewHo
             @Override
             public void onClick(View view) {
                 if (!Home.swipeRefreshLayout.isRefreshing()) {
-                    ProductDetail.modelProductListList.clear();
-                    ProductDetail.modelProductListList.addAll(modelProductListList);
+                    ProductDetail.productList.clear();
+                    ProductDetail.productList.addAll(productList);
                     ProductDetail productDetail = new ProductDetail();
                     Bundle bundle = new Bundle();
                     bundle.putInt("position", position);

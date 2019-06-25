@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.teocfish.teoc.CategoryList">
+    tools:tContext="com.teocfish.teoc.CategoryList">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/categoryRecyclerView"
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="No modelProductList added in this category!"
+            android:text="No product added in this category!"
             android:textSize="@dimen/_16ssp"
             android:layout_marginTop="@dimen/_10sdp"
             android:textStyle="bold" />

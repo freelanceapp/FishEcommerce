@@ -8,13 +8,13 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:fitsSystemWindows="true"
-    tools:context="com.teocfish.teoc.MainActivity">
+    tools:tContext="com.teocfish.teoc.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
-        tools:context="com.teocfish.teoc.MainActivity">
+        tools:tContext="com.teocfish.teoc.MainActivity">
 
         <FrameLayout
             android:id="@+id/frameLayout"
@@ -60,7 +60,7 @@
                         android:drawablePadding="@dimen/_15sdp"
                         android:drawableTint="@color/light_black"
                         android:gravity="center_vertical"
-                        android:hint="Search for modelProductLists..."
+                        android:hint="Search for products..."
                         android:paddingLeft="@dimen/_20sdp" />
 
                     <SearchView

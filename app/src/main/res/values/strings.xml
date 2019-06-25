@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Teoc</string>
-    <string name="secure_payment_text"><![CDATA[Safe and Secure Payments. <br />100% Authentic modelProductLists]]></string>
+    <string name="secure_payment_text"><![CDATA[Safe and Secure Payments. <br />100 percent Authentic products]]></string>
     <string name="emailId">shiraz.bizeeoco@gmail.com</string>
     <string name="err_msg_email">Please Enter A Valid Email Id</string>
     <string name="contactNo">+919606226717</string>
@@ -13,7 +13,7 @@
     <!-- <string name="facebook_app_id">497140564014517</string>-->
     <string name="facebook_app_id">2390088794645290</string>
     <string name="fb_login_protocol_scheme">fb2390088794645290</string>
-    <string name="SHA1_fingerprint"> E3:74:C8:1C:84:97:43:1D:80:9A:54:0B:9A:6A:8D:E2:6A:42:03:42</string>
+    <string name="SHA1_fingerprint">20:A1:E6:B6:A3:C3:44:8A:F3:67:CC:EA:F1:E5:20:33:76:0E:A6:C6</string>
     <string name="btn_logout_from_google">with Facebook</string>
     <string name="btn_revoke_access">Revoke Access</string>
     <string name="btn_with_facebook">with Facebook</string>
@@ -23,6 +23,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancel">Reason Of Cancellation</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="product_name">Product Name</string>
+    <string name="rate_and_review">Rate and Review</string>
     <string-array name="order_cancel">
         <item> Expected delivery time is too long </item>
         <item> Bought it from somewhere else </item>

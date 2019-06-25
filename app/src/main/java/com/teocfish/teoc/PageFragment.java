@@ -48,10 +48,10 @@ public class PageFragment extends Fragment {
             public void onClick(View view) {
                 if (!Home.swipeRefreshLayout.isRefreshing()) {
 //                    Log.d("clickedPosition", position + "");
-                    List<ModelProductList> list = new ArrayList<>();
+                    List<Product> list = new ArrayList<>();
                     list.add(SplashScreen.sliderListResponsesData.get(position).getProductsdetails());
-                    ProductDetail.modelProductListList.clear();
-                    ProductDetail.modelProductListList.addAll(list);
+                    ProductDetail.productList.clear();
+                    ProductDetail.productList.addAll(list);
                     ProductDetail productDetail = new ProductDetail();
                     Bundle bundle = new Bundle();
                     bundle.putInt("position", 0);

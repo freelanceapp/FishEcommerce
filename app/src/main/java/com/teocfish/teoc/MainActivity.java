@@ -27,7 +27,11 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.teocfish.teoc.utills.Config;
+import com.teocfish.teoc.utills.Constant;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
@@ -38,6 +42,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     public static ImageView menu, back, cart, search;
     public static DrawerLayout drawerLayout;
     public static String currency, userId;
-    public static String order_case="Q2FuY2Vs";
+    public static String order_case="T3JkZXIgQ2FuY2VsbGVk";
     @BindView(R.id.navigationView)
     NavigationView navigationView;
     public static TextView title, cartCount;
@@ -69,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         getCurrency();
         getUserId();
         checkForUpdates();
+        getFcmToken();
         Intent intent = getIntent();
         try {
             from = intent.getStringExtra("from");
@@ -93,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.myHome:
+                        loadFragment(new Home(), true);
+                        break;
                     case R.id.myWishList:
                         loadFragment(new MyWishList(), true);
-
                         break;
                     case R.id.myCart:
                         loadFragment(new MyCartList(), true);
@@ -136,8 +146,8 @@ public class MainActivity extends AppCompatActivity {
         displayFirebaseRegId(); // display firebase id
 
         if (getIntent().getBooleanExtra("isFromNotification", false)) {
-            ProductDetail.modelProductListList.clear();
-            ProductDetail.modelProductListList.addAll(SplashScreen.imagesList1);
+            ProductDetail.productList.clear();
+            ProductDetail.productList.addAll(SplashScreen.imagesList1);
             ProductDetail productDetail = new ProductDetail();
             Bundle bundle = new Bundle();
             bundle.putInt("position", 0);
@@ -151,6 +161,27 @@ public class MainActivity extends AppCompatActivity {
             {
                 startActivity(new Intent(MainActivity.this, DeliveryLocation.class));
                 finish();
+            }
+        });
+    }
+    private void getFcmToken(){
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( MainActivity.this,  new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+                Log.e(Constant.TAG,"Fcm Token : "+newToken);
+                Api.getClient().sendAccessToken(newToken, new Callback<RegistrationResponse>() {
+                    @Override
+                    public void success(RegistrationResponse registrationResponse, Response response) {
+                        Log.d(Constant.TAG,registrationResponse.getSuccess());
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Log.e(Constant.TAG, error.toString());
+                    }
+                });
+
             }
         });
     }

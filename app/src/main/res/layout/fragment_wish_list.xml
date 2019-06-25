@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Add modelProductList in your wishlist now." />
+            android:text="Add product in your wishlist now." />
 
         <Button
             android:id="@+id/continueShopping"

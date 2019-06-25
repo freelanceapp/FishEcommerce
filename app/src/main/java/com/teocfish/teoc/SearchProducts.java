@@ -28,7 +28,7 @@ public class SearchProducts extends Fragment {
     RecyclerView searchProductsRecyclerView;
     @BindView(R.id.searchEditText)
     EditText searchEditText;
-    List<ModelProductList> modelProductListList;
+    List<Product> productList;
 
     @BindView(R.id.defaultMessage)
     TextView defaultMessage;
@@ -40,7 +40,7 @@ public class SearchProducts extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.activity_search_products, container, false);
         ButterKnife.bind(this, view);
-        defaultMessage.setText("Search Any ModelProductList");
+        defaultMessage.setText("Search Any Product");
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -79,13 +79,13 @@ public class SearchProducts extends Fragment {
     }
 
     private void searchProducts(String s) {
-        modelProductListList = new ArrayList<ModelProductList>();
+        productList = new ArrayList<Product>();
         if (s.length() > 0) {
             for (int i = 0; i < SplashScreen.allProductsData.size(); i++)
                 if (SplashScreen.allProductsData.get(i).getProductName().toLowerCase().contains(s.toLowerCase().trim())) {
-                    modelProductListList.add(SplashScreen.allProductsData.get(i));
+                    productList.add(SplashScreen.allProductsData.get(i));
                 }
-            if (modelProductListList.size() < 1) {
+            if (productList.size() < 1) {
                 defaultMessage.setText("Record Not Found");
                 defaultMessage.setVisibility(View.VISIBLE);
             } else {
@@ -93,8 +93,8 @@ public class SearchProducts extends Fragment {
             }
 //            Log.d("size", tModels.size() + "" + SplashScreen.allProductsData.size());
         } else {
-            modelProductListList = new ArrayList<ModelProductList>();
-            defaultMessage.setText("Search Any ModelProductList");
+            productList = new ArrayList<Product>();
+            defaultMessage.setText("Search Any Product");
             defaultMessage.setVisibility(View.VISIBLE);
         }
         setProductsData();
@@ -107,7 +107,7 @@ public class SearchProducts extends Fragment {
         GridLayoutManager gridLayoutManager;
         gridLayoutManager = new GridLayoutManager(getActivity(), 1);
         searchProductsRecyclerView.setLayoutManager(gridLayoutManager);
-        productListAdapter = new SearchProductListAdapter(getActivity(), modelProductListList);
+        productListAdapter = new SearchProductListAdapter(getActivity(), productList);
         searchProductsRecyclerView.setAdapter(productListAdapter);
 
     }

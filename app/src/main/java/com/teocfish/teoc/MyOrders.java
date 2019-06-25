@@ -1,9 +1,11 @@
 package com.teocfish.teoc;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,7 @@ import retrofit.client.Response;
 
 public class MyOrders extends Fragment {
 
+    private Context tContext;
     View view;
     @BindView(R.id.myOrdersRecyclerView)
     RecyclerView myOrdersRecyclerView;
@@ -46,6 +49,7 @@ public class MyOrders extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_my_orders, container, false);
         ButterKnife.bind(this, view);
+        tContext = getContext();
         MainActivity.title.setText("My Orders");
         if (!MainActivity.userId.equalsIgnoreCase("")) {
             getMyOrders();
@@ -86,9 +90,14 @@ public class MyOrders extends Fragment {
                 pDialog.dismiss();
                 if (myOrdersResponse.getSuccess().equalsIgnoreCase("true")) {
                     try {
-//                        Log.d("size", myOrdersResponse.getOrderes().size() + "");
                         myOrdersResponseData = myOrdersResponse;
-                        setProductsData();
+                        if (!myOrdersResponse.getMessage().contains("No order histroy")) {
+                            setProductsData();
+                        }else {
+                            emptyOrdersLayout.setVisibility(View.VISIBLE);
+
+                        }
+
                     } catch (Exception e) {
                         emptyOrdersLayout.setVisibility(View.VISIBLE);
                     }
@@ -114,10 +123,10 @@ public class MyOrders extends Fragment {
     }
 
     private void setProductsData() {
-        GridLayoutManager gridLayoutManager;
-        gridLayoutManager = new GridLayoutManager(getActivity(), 1);
-        myOrdersRecyclerView.setLayoutManager(gridLayoutManager);
-        MyOrdersAdapter myOrdersAdapter = new MyOrdersAdapter(getActivity(), myOrdersResponseData.getOrderes());
+        LinearLayoutManager tManager;
+        tManager = new LinearLayoutManager(getActivity());
+        myOrdersRecyclerView.setLayoutManager(tManager);
+        MyOrdersAdapter myOrdersAdapter = new MyOrdersAdapter(tContext, myOrdersResponseData);
         myOrdersRecyclerView.setAdapter(myOrdersAdapter);
 
     }

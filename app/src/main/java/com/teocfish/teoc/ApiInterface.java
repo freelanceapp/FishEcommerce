@@ -14,7 +14,7 @@ public interface ApiInterface {
     // API's endpoints
     @GET("/JSON/allproducts.php")
     public void getAllProducts(
-            Callback<List<ModelProductList>> callback);
+            Callback<List<Product>> callback);
 
     @GET("/JSON/pbyc.php")
     public void getCategoryList(Callback<List<CategoryListResponse>> callback);
@@ -63,7 +63,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/JSON/product.php")
-    public void getProductDetails(@Field("product_id") String product_id, Callback<ModelProductList> callback);
+    public void getProductDetails(@Field("product_id") String product_id, Callback<Product> callback);
 
 
     @FormUrlEncoded
@@ -73,7 +73,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/JSON/viewcart.php")
-    public void getCartList(@Field("user_id") String user_id, Callback<CartistResponse> callback);
+    public void getCartList(@Field("user_id") String user_id, Callback<CartListResponse> callback);
 
 
     @FormUrlEncoded
@@ -100,7 +100,6 @@ public interface ApiInterface {
     @POST("/JSON/resentmail.php")
     public void resentEmail(@Field("email") String email, Callback<SignUpResponse> callback);
 
-
     @FormUrlEncoded
     @POST("/JSON/login.php")
     public void
@@ -122,16 +121,14 @@ public interface ApiInterface {
                          Callback<SignUpResponse> callback);
 
 @FormUrlEncoded
-@GET("/JSON/order-cancel.php")
-public void  ordercancel(@Field("id") String id,
+@POST("/JSON/order-cancel.php")
+public void  ordercancel(@Field("order_id") String id,
                         @Field("order_case") String order_case,
                         Callback<SignUpResponse> callback);
-
 
     @FormUrlEncoded
     @POST("/JSON/forgot.php")
     public void forgotPassword(@Field("email") String email, Callback<SignUpResponse> callback);
-
 
     @FormUrlEncoded
     @POST("/JSON/register.php")
@@ -140,6 +137,12 @@ public void  ordercancel(@Field("id") String id,
                              @Field("password") String password,
                              @Field("logintype") String logintype,
                              Callback<SignUpResponse> callback);
-
+  @FormUrlEncoded
+    @POST("/JSON/review.php")
+    public void rateReview(@Field("user_id") String user_id,
+                             @Field("product_id") String product_id,
+                             @Field("review") String review,
+                             @Field("rating") String rating,
+                             Callback<SignUpResponse> callback);
 
 }
